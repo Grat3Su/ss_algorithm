@@ -1,0 +1,36 @@
+package basic.subset;
+
+public class SubSet2 {
+	static int[] src = {1,2,3,4,5};
+	static boolean[] select = new boolean[src.length];
+	//tgt를 만들지 않는 이유는 부분집합의 원소의 수가 가변적인 부분도 있지만 , 다른 자료구조로 대체할 수 있기 때문에
+	
+	public static void main(String[] args) {
+		
+		subset(0);
+	}
+	
+	static void subset(int idx) {
+		if(idx == select.length) {
+			printSubset();
+			return;
+		}
+		
+		select[idx] = true;
+		subset(idx+1);
+		select[idx] = false;
+		subset(idx+1);
+	}
+	
+	static void printSubset() {
+		System.out.print("{");
+		for(int i = 0; i<src.length; i++) {
+			if(select[i])
+				System.out.print(src[i]+" ");
+		}
+		
+		System.out.print("}");
+		
+	}
+
+}

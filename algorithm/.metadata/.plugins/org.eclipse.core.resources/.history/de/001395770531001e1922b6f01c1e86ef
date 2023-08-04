@@ -1,0 +1,22 @@
+package BOJ;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class BOJ_11660_ArrayAreaAdd {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		int N = Integer.parseInt(st.nextToken())+1;
+		int M = Integer.parseInt(st.nextToken());
+		int[] src = new int[N];
+		StringBuilder sb = new StringBuilder();
+		
+		st = new StringTokenizer(br.readLine());
+		
+	}
+
+}

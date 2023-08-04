@@ -1,0 +1,64 @@
+package basic.perm;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+public class lader {
+	static int[][] map = new int[100][100];
+	static int result = 0;
+	public static void main(String[] args) throws IOException{
+		//아래에서부터 올라가는데 3개 체크 
+		//System.setIn(new FileInputStream("input (2).txt"));
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+				
+		int T = Integer.parseInt(st.nextToken());
+
+		int end = -1;
+		for(int t = 0; t<T; t++) {
+			for(int i = 0; i<100; i++)
+			{
+				st = new StringTokenizer(br.readLine());
+				for(int j = 0; j<100; j++)
+				{
+					map[j][i] = Integer.parseInt(st.nextToken());
+					if(map[j][i] == 2)
+						end = j;
+				}
+			}
+		}
+		System.out.println(end);
+		climbLader(end, 99, false, false);
+		
+	}
+	
+	static void climbLader(int x, int y, boolean left, boolean right)
+	{
+		if(y == 0) {
+			result = x;
+			System.out.println("wow");
+			System.out.println(result);
+			return;
+		}
+		
+		y--;
+		
+		if(!left&& x<99 &&map[x+1][y] == 1) {
+			right = true;
+			x++;
+		}
+		else if(!right&& x>1 &&map[x-1][y] == 1) {
+			left = true;
+			x--;
+		}
+		else if(!left&&!right)
+			y--;
+		
+		climbLader(x, y, left, right);
+	}
+
+}

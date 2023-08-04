@@ -1,0 +1,35 @@
+package BOJ;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class BOJ_2798_BlackJack {
+	static int[] src;
+	static int[] tgt;
+	static int N;//배열 크기
+	static int M;//비교할 수
+	static StringBuilder sb = new StringBuilder();
+	
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
+		
+		src = new int[N];
+		tgt = new int[3];
+		st = new StringTokenizer(br.readLine());
+
+		for(int i = 0; i<N; i++)
+		{
+			src[i] = Integer.parseInt(st.nextToken());
+		}
+	}
+	
+	static void comb(int start, int tgtidx) {
+		
+	}
+
+}

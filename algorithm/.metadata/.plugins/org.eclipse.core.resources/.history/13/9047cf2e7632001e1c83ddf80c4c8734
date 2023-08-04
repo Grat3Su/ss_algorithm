@@ -1,0 +1,43 @@
+package basic.stackqueue;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+//여러개의 데이터를 포함하는 객체를 다루는 부분 <= y,x,c(비용)
+//user defined class
+//array <-- type 동일
+public class StackQueueTest3 {
+
+	public static void main(String[] args) {
+		//stack
+		Deque<Node>stack = new ArrayDeque<>();
+		stack.push(new Node(3,0,1));
+		stack.push(new Node(1,2,3));
+		stack.push(new Node(7,4,-3));
+		stack.push(new Node(5,0,4));
+
+		while(!stack.isEmpty()) {
+			System.out.println(stack.pop());
+		}
+	}
+	
+	//사용자 정의 클래스
+	static class Node{
+		int y, x, c;
+		Node(int y, int x, int c){//기본 생성자x public x
+			this.y = y;
+			this.x = x;
+			this.c =c;
+		}
+		@Override
+		public String toString() {
+			return "Node [y=" + y + ", x=" + x + ", c=" + c + "]";
+		}
+		
+	}
+
+}
+/*
+ * 
+  */
+ 

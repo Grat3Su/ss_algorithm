@@ -1,0 +1,59 @@
+package BOJ;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+public class BOJ_2961_doyoungscook2 {
+	static int N;
+	static int[][] src; 
+	static boolean[] selected; 
+	static int min;
+	public static void main(String[] args) throws IOException{
+		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(bf.readLine());
+		N = Integer.parseInt(st.nextToken());
+		src = new int[N][2];
+		selected = new boolean[N];
+		min = Integer.MAX_VALUE;
+		for(int i = 0; i<N; i++) {
+			st = new StringTokenizer(bf.readLine());
+			src[i][0] = Integer.parseInt(st.nextToken());
+			src[i][1] = Integer.parseInt(st.nextToken());
+		}
+		subSet(0,0);
+		System.out.println(min);
+	}
+	
+	static void subSet(int idx, int mask) {
+		if(idx == N) {
+			result(mask);
+			return;
+		}
+		subSet(idx+1, mask|1<<mask);
+		subSet(idx+1, mask);
+	}
+	
+	static void result(int mask) {
+		int mul = 1;
+		int add = 0;
+		boolean check=false;
+		for(int i = 0; i<N; i++)
+		{
+			if((mask&1<<i)!=0) {
+				mul*=S[i];
+				add+=B[i];
+				check=true;
+				System.out.print(S[i]+" ");
+			}
+		}
+		System.out.println();
+		if(check)
+		if(min>(mul-add>0?mul-add:add-mul))
+			min = (mul-add>0?mul-add:add-mul);
+		//System.out.println(min);
+	}
+
+}

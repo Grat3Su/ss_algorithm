@@ -1,0 +1,32 @@
+package basic.perm;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+public class lader {
+
+	public static void main(String[] args) throws IOException{
+		//아래에서부터 올라가는데 3개 체크 
+		System.setIn(new FileInputStream("input (2).txt"));
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		int[][] src = new int[100][100];
+		int T = Integer.parseInt(st.nextToken());
+		for(int t = 0; t<T; t++) {
+			for(int i = 0; i<100; i++)
+			{
+				for(int j = 0; j<100; j++)
+				{
+					src[i][j] = Integer.parseInt(st.nextToken());
+				}
+				System.out.println(Arrays.toString(src[i]));
+			}
+		}
+	}
+
+}
