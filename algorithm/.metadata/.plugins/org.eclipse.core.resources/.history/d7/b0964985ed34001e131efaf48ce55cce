@@ -1,0 +1,41 @@
+package online.LinkedList;
+
+import java.util.EmptyStackException;
+
+public class LinkedListStack<E> implements Istack<E> {
+
+	private Node<E> top = null;//맨 처음은 공백
+	@Override
+	public void push(E e) {//첫 노드로 삽입
+		top = new Node<>(e, top);
+		
+	}
+
+	@Override
+	public E pop() {//첫 노드 삭제해서 반환해야함
+		if(isEmpty()) {
+			throw new EmptyStackException();
+		}
+		Node<E> popNode = top;
+		top = popNode;
+		return null;
+	}
+
+	@Override
+	public E peek() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int size() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean isEmpty() {		
+		return top == null;
+	}
+
+}
