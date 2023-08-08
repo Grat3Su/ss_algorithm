@@ -11,22 +11,40 @@ import java.util.StringTokenizer;
 
 
 public class BOJ_1427_SortInsight {
-	static int[]arr;
+	static SortNum[]arr;
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		//StringTokenizer st = new StringTokenizer(br.readLine());
 		String sortArr = br.readLine();
-		arr = new int[sortArr.length()];
+		arr = new SortNum[sortArr.length()];
 		for(int i = 0; i<sortArr.length(); i++) {
-			arr[i] = sortArr.charAt(i)-'0';
+			arr[i] = new SortNum(sortArr.charAt(i)-'0');
 		}
-		//Arrays.sort(arr,Collections.reverseOrder());
-		
-		System.out.println(Arrays.toString(arr));
+
+		Arrays.sort(arr);
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0; i<arr.length; i++) {
+			sb.append(arr[i].getValue());
+		}
+		System.out.println(sb);
 	}
 	
-//	int sort(int a, int b) {
-//		return 
-//	}
 
+}
+
+class SortNum implements Comparable<SortNum>{
+	int value;
+	
+	public SortNum(int value) {
+		this.value = value;
+	}
+	public int getValue() {
+		return value;
+	}
+
+	@Override
+	public int compareTo(SortNum o) {
+		// TODO Auto-generated method stub
+		return o.value - this.value;
+	}
 }

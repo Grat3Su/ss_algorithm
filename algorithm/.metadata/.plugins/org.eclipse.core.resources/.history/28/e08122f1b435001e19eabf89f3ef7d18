@@ -1,0 +1,10 @@
+package sw;
+
+public class SW_1233_사칙연산유효성 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

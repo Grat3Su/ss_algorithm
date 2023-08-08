@@ -1,2 +1,2 @@
 eclipse.preferences.version=1
-prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<watchExpressions>\r\n    <expression enabled\="true" text\="sb"/>\r\n    <expression enabled\="true" text\="ans"/>\r\n</watchExpressions>\r\n
+prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<watchExpressions>\r\n<expression enabled\="true" text\="sb"/>\r\n<expression enabled\="true" text\="ans"/>\r\n<expression enabled\="true" text\="tgt[0]+tgt[1]"/>\r\n<expression enabled\="true" text\="M"/>\r\n<expression enabled\="true" text\="Nidx"/>\r\n</watchExpressions>\r\n
