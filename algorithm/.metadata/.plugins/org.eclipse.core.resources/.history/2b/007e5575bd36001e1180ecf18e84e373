@@ -1,0 +1,32 @@
+package BOJ;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class BOJ_563_색종이 {
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int total = 0;  //검은 영역의 넓이
+        int N = Integer.parseInt(br.readLine());  //색종이 개수
+        boolean[][] arr = new boolean[101][101];  //도화지
+        for (int t = 0; t < N; t++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int x = Integer.parseInt(st.nextToken());
+            int y = Integer.parseInt(st.nextToken());
+            //(x,y)부터 (x+9, y+9)까지의 영역을 하나씩 체크한 후 총 넓이에 더해준다
+            for (int i = x; i < x+10; i++) {
+                for (int j = y; j < y+10; j++) {
+                    if (!arr[i][j]) {
+                        arr[i][j] = true;
+                        total++;
+                    }
+                }
+            }
+        }
+        System.out.print(total);
+    }
+
+}
