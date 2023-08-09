@@ -39,30 +39,19 @@ public class hwalgo06_부울경_3반_장수영 {
 			for (int i = 0; i < N; i++) {
 				A[i] = Integer.parseInt(st.nextToken());
 			}
-			snack(0, 0);
+			
+			for(int i = 0; i<N-1; i++) {
+				for(int j = i+1; j<N; j++) {
+					if(A[i]+A[j] >M)
+						continue;
+					else if(A[i]+A[j]>ans)
+						ans = A[i]+A[j];
+				}
+			}
+			
+			//snack(0, 0);
 			sb.append("#").append(t+1).append(" ").append(ans).append("\n");
 		}
 		System.out.println(sb);
 	}
-
-	static void snack(int Nidx, int tgtidx) {
-		if (tgtidx >= 2) {
-			if(tgt[0]+tgt[1] >M) {
-				return;
-			}
-			else if(tgt[0]+tgt[1]>ans){
-				ans = tgt[0]+tgt[1];
-				return;
-			}
-			return;
-		}
-		if(Nidx==N)
-			return;
-
-		tgt[tgtidx] = A[Nidx];
-		snack(tgtidx + 1, Nidx + 1);
-		snack(tgtidx, Nidx + 1);
-
-	}
-
 }
