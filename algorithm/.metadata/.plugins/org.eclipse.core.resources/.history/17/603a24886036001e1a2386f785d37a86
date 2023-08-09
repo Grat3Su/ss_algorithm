@@ -1,0 +1,22 @@
+package online.Tree;
+
+import java.util.ArrayDeque;
+import java.util.Queue;
+
+public class ComepleteBinaryTree2 {
+	private Object[] nodes;
+	private int lastIdx;//.
+	private final int SIZE;
+	public ComepleteBinaryTree2(int size) {
+		SIZE = size;
+	}
+	public void bfs2() {
+		
+	}
+	
+	private void dfsByPreOrder(int current) {//현재 노드를 전위 순회로 탐색
+		Queue<Integer> queue = new ArrayDeque<Integer>();
+		current = queue.poll();
+
+	}
+}

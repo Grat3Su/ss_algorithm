@@ -1,0 +1,20 @@
+package basic;
+
+import java.util.Arrays;
+
+public class BinarySeatchTest {
+
+	public static void main(String[] args) {
+		int[] input = {1,5,7,10,13};//정렬됨
+		
+		System.out.println(Arrays.binarySearch(input, 1));
+		System.out.println(Arrays.binarySearch(input, 5));
+		System.out.println(Arrays.binarySearch(input, 3));
+		System.out.println(Arrays.binarySearch(input, 6));
+		System.out.println(Arrays.binarySearch(input, 0));
+		//바이너리 서치 결과가 음수면 못찾은 것, 만약 찾는 키가 있었다면 어느 인덱스에 있ㅇ야하는지 리턴
+		System.out.println(Arrays.binarySearch(input, 2,3));
+		
+	}
+
+}
