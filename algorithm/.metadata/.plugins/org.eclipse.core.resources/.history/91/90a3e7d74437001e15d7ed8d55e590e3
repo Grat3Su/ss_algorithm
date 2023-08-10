@@ -1,0 +1,10 @@
+package sw;
+
+public class SW_5215_HamburgerDiet {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

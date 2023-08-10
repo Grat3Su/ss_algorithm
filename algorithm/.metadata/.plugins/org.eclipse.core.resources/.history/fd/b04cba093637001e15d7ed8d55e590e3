@@ -1,0 +1,10 @@
+package basic.comb;
+
+public class Comb_NP {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

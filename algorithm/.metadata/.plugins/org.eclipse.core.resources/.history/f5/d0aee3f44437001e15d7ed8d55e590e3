@@ -1,0 +1,61 @@
+package sw;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+/*
+1
+5 1000
+100 200
+300 500
+250 300
+500 1000
+400 400	//Test Case 갯수
+//Test Case #1, N = 5, L = 1000
+//Test Case #1, 첫번째 재료 정보
+
+
+
+ */
+public class SW_5215_HamburgerDiet {
+	static int[][]recipe;
+	static int N;
+	static int limit;
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int T = Integer.parseInt(br.readLine());
+		int N;
+		int limit;
+		
+		for(int t = 0; t<T; t++) {
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			N = Integer.parseInt(st.nextToken());
+			limit = Integer.parseInt(st.nextToken());
+			recipe = new int[N][2];
+			
+			for(int i = 0; i<N; i++) {
+				st = new StringTokenizer(br.readLine());
+				recipe[i][0] = Integer.parseInt(st.nextToken());
+				recipe[i][1] = Integer.parseInt(st.nextToken());
+			}
+		}
+
+	}
+	
+	static void subset(int idx, int mask) {
+		if(idx == recipe.length) {
+			complete(mask);
+			return;
+		}
+
+		subset(idx+1, mask|1<<mask);//선택
+
+		subset(idx+1, mask);//미선택
+	}
+	static int goodCal;// if(limit<goodCal = false);	
+	static void complete(int mask) {
+		if(goodCal >limit) return 0;
+	}
+}
