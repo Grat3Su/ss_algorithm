@@ -11,20 +11,38 @@ public class BOJ_3040_snowhie {
 		int []real = new int[9];
 		int []index = new int[9];
 		int sum = 0;
+		StringBuilder sb = new StringBuilder();
 		for(int i = 0; i<9; i++) {
 			real[i] = Integer.parseInt(br.readLine());		
 			 sum += real[i]; 
 		}
 		index[7]=1;
 		index[8]=1;
-		
 		while(true) {
 			int tgtidx = 0;
+			int[]x = new int[2];
+			x[0] = 0;
+			int sub = 0;
 			for(int i = 0; i<9; i++) {
-				
+				if(index[i]==1) {
+					sub +=real[i];
+					if(x[0]!=0) x[0] = real[i];
+					else x[1] = real[i];
+				}
+			
+				if(sum-sub==100) {
+					for(int j = 0; j<9;j++) {
+						if(real[j]!=x[0]&&real[j]!=x[1])
+							sb.append(real[j]).append("\n");
+					}
+					break;
+				}
 					
 			}
+			
+			if(!np(index))break;
 		}
+		System.out.println(sb);
 	}
 	
 	static boolean np(int[] array) {
