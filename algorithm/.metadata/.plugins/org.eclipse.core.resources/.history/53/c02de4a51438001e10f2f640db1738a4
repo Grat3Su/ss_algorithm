@@ -1,0 +1,10 @@
+package sw;
+
+public class SW_4008_numMake {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -29,7 +29,7 @@ public class PermutationNpTest {
 		
 		int N = p.length;
 		int i = N-1;
-		while(p[i-1]>=p[i]) --i;
+		while(i>0&&p[i-1]>=p[i]) --i;
 		//1. 직전값을 비교해서 크면 기준을 옮긴다
 		//2. 상황을 만족하지 못해서 내려온다
 		if(i==0) return false;//다음 순열 없음(가장 큰 순열의 형태)
