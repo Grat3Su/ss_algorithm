@@ -1,0 +1,35 @@
+package BOJ;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayDeque;
+import java.util.Queue;
+import java.util.StringTokenizer;
+/* 데이터셋
+ * K - 2^k 배열
+ * Arr
+ * H - 구멍위치
+2
+R D D R
+3
+ */
+
+public class BOJ_20187_paper {
+
+	public static void main(String[] args) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int K = Integer.parseInt(br.readLine());
+		
+		Queue<Character> queue = new ArrayDeque<>();
+		int size = (int) Math.pow(2,K);
+		int[][] ans = new int[K][K];
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		for(int i = 0; i<(2*K); i++) {
+			queue.offer(st.nextToken().charAt(0));
+		}
+		
+
+	}
+
+}
