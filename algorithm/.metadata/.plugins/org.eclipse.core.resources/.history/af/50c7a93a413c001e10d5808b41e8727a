@@ -1,0 +1,56 @@
+package BOJ;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class BOJ_1074_Z2 {
+/*
+ * 데이터셋 N, 방문할 r,c가 몇번째인지 
+2 3 1
+ */
+	static int N,R,C,ans;
+	static int[][] src;
+	public static void main(String[] args) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		//크기 방문할 위치
+		N = Integer.parseInt(st.nextToken());
+		R = Integer.parseInt(st.nextToken());
+		C = Integer.parseInt(st.nextToken());
+		src = new int[4][4];
+		
+		double size = Math.pow(2, N);
+		int count = 0;
+		
+		int r = 0;
+		int c = 0;
+		int sum = 0;
+		
+		while(size > 0) {
+			size/=2;
+			if(R<r+size&&C<c+size) count+=0;
+			else if(R<r+size) {
+				sum += size*size;
+				r +=size;
+			}
+			else if(C<c+size) {
+				sum+=size*size*2;
+				c+=size;
+			}
+			else {
+				sum+=size*size*3;
+				c += size;
+				r += size;
+			}
+			if(size == 1) {
+                System.out.println(sum);
+                break;
+         }
+		}
+		
+		
+	}
+	
+}

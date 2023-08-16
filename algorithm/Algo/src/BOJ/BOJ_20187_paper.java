@@ -14,6 +14,7 @@ import java.util.StringTokenizer;
 2
 R D D R
 3
+	k =1인경우 반례 찾기
  */
 
 public class BOJ_20187_paper {
