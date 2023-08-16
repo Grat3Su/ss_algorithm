@@ -1,0 +1,47 @@
+package BOJ;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class BOJ_3109_bakery2 {
+	static char[][] map;
+	static int R,C,ans,col[];
+	static int[] dy = {-1,0,1};//우선순위
+	
+	public static void main(String[] args)  throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		R = Integer.parseInt(br.readLine());
+		C = Integer.parseInt(br.readLine());
+		map = new char [R][];
+		ans = 0;
+		col = new int[C];
+		
+		for(int i = 0; i<R; i++) {
+			map[i] = br.readLine().toCharArray();
+		}
+		
+
+	}
+	
+	static void setPipe(int col) {
+		
+		if(col == C-1) {
+		
+			return;
+		}
+		for(int i = 0; i<C; i++) {
+			
+		}
+		setPipe(col+1);
+	}
+	
+	static boolean isAvailable(int row) {
+		
+		
+		
+		return true;
+	}
+
+}
