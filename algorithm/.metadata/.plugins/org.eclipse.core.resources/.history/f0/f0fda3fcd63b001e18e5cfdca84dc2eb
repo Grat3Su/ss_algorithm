@@ -1,0 +1,21 @@
+package online;
+
+import java.util.Scanner;
+
+public class NQueenTest1 {
+	static int N,col[],ans;
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		N = sc.nextInt();
+		col = new int[N+1];//1부터 사용
+		ans = 0;//가능한 경우의 수
+	}
+	
+	static void setQueen(int row) {
+		for(int i = 0; i<=N; i++) {
+			col[row] = i;
+			setQueen(row+1);
+		}
+	}
+}
