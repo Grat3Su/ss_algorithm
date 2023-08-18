@@ -1,0 +1,25 @@
+package hw;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+/* 데이터셋
+ * R C(알파벳수 겸 y)
+ * 2 4
+CAAB
+ADCB
+ */
+public class BOJ_1987_Alphabet {
+	static int R, C;
+	static int[] map;
+	static char[] c;
+	static boolean[] checked;
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+	}
+
+}

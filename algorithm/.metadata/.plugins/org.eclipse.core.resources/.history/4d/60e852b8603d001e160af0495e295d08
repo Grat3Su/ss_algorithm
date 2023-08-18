@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class AreaAdd {
+
+	public static void main(String[] args) {
+		//Scanner sc = new Scanner(System.in);
+		
+		int[] area = new int[51];
+		
+		
+		//50개 생성
+		for(int i = 0; i<51; i++) {
+			area[i] = i;//0은 더미
+		}
+
+	}
+
+}

@@ -1,0 +1,26 @@
+package sw;
+
+public class SW_5644_BatteryCharge {
+
+	static int T, M, A, ans;
+	static int[] pathA, pathB;// 두 사람이 움직이는 경로를 저장
+	static BC[] bcArray;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	static class BC {
+		int y, x, c, p;
+
+		public BC(int y, int x, int c, int p) {
+			super();
+			this.y = y;
+			this.x = x;
+			this.c = c;
+			this.p = p;
+		}
+
+	}
+}

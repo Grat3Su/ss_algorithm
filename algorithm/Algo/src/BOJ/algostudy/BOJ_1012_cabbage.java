@@ -55,14 +55,14 @@ public class BOJ_1012_cabbage {
 				st = new StringTokenizer(br.readLine());
 				int x = Integer.parseInt(st.nextToken());
 				int y = Integer.parseInt(st.nextToken());
-				map[x][y] = 1;
+				map[x][y] = 1;// 배추
 			}
 			int cnt = 0;
 			for (int i = 0; i < M; i++) {
 				for (int j = 0; j < N; j++) {
 					if (map[i][j] == 1 && !check[i][j]) {// 배추가 심어져있고 방문하지 않았던 노드면 탐색
 						cnt++;
-						dfs(i, j);
+						dfs(i, j);// 방문하지 않은 모든 배추 루프
 					}
 				}
 			}
@@ -78,7 +78,7 @@ public class BOJ_1012_cabbage {
 			int cx = x + dx[i];
 			int cy = y + dy[i];
 			if (cx == M || cy == N || cx == -1 || cy == -1)
-				return;
+				continue;
 
 			if (!check[cx][cy] && map[cx][cy] == 1) {
 				dfs(cx, cy);
