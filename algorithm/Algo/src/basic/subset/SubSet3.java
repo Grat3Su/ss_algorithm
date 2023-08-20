@@ -17,7 +17,7 @@ public class SubSet3 {
 			return;
 		}
 
-		subset(idx+1, mask|1<<mask);//선택
+		subset(idx+1, mask|1<<idx);//선택
 
 		subset(idx+1, mask);//미선택
 	}

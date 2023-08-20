@@ -38,7 +38,9 @@ public class Comb_NP {
 	static boolean np(int array[]) {
 		// 3가지
 		// 앞에서 교환되어야 하는 인덱스&작업
-		int i = src.length - 1;
+		//int i = src.length - 1;
+		int i, j, k;
+		i = j = k = src.length-1;
 		while (i > 0 && src[i - 1] >= src[i])
 			--i;// 큰것이 나타날때까지 감소
 		// 이미 가장 큰 수 일때
@@ -49,14 +51,14 @@ public class Comb_NP {
 		// 앞쪽에서 바꿀 index 확정 i-1
 
 		// 뒤에서 교환되어야 하는 인덱스&작업
-		int j = src.length - 1;
+		//int j = src.length - 1;
 		while (src[i - 1] >= src[j])
 			--j;
 
 		swap(src, i - 1, j);
 
 		// 앞뒤 교환 후 뒤쪽 정리(교환)
-		int k = src.length - 1;
+		//int k = src.length - 1;
 		while (i < k) {
 			swap(src, i++, k--);
 		}

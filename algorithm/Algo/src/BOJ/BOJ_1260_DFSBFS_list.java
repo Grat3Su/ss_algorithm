@@ -43,7 +43,7 @@ public class BOJ_1260_DFSBFS_list {
 		}
 		// 작은 번호 정점부터 방문 <= 인접 행렬은 for idx 사용 <= 정렬 필요 x
 		visit[V] = true;
-		dfs(V);
+		//dfs(V);
 		sb.setCharAt(sb.length() - 1, '\n');
 
 		for (int i = 1; i <= N; i++) {
@@ -51,18 +51,18 @@ public class BOJ_1260_DFSBFS_list {
 		}
 	}
 
-	static void dfs(int num) {
-		sb.append(num).append(" ");
-		
-		//int size = matrix.getnum(num).size;
-		//for(int i = 0; i<size; i++) {//num에서 갈 수 있는 정점만을 모아놓은 리스트에서 순차적으로 꺼낸다
-			//int v = list.get(num).get(i);			
-		}
-			//if(visit[i]) continue;
-		//visit[i] = true;
-		//	dfs(i);
-				
-			//}
+//	static void dfs(int num) {
+//		sb.append(num).append(" ");
+//		
+//		int size = matrix.getnum(num).size;
+//		for(int i = 0; i<size; i++) {//num에서 갈 수 있는 정점만을 모아놓은 리스트에서 순차적으로 꺼낸다
+//			int v = list.get(num).get(i);	
+//			if(visit[i]) continue;
+//		visit[i] = true;
+//			dfs(i);
+//				
+//			}		
+//		}
 	//}
 
 	static void bfs() {

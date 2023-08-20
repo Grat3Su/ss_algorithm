@@ -1,4 +1,4 @@
-package BOJ;
+package BOJ.algostudy;
 
 import java.io.BufferedReader;
 import java.io.IOException;
