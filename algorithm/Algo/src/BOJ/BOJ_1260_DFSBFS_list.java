@@ -77,7 +77,7 @@ public class BOJ_1260_DFSBFS_list {
 		for(int i = 0; i<N+1; i++) {
 			if(!matrix[num][i]||visit[i])
 		visit[i] = true;
-			dfs(i);
+			//dfs(i);
 		}
 		}	
 	}

@@ -73,8 +73,24 @@ public class AdjList {
 				}					
 			}
 		}
-			
+			dfs(adjMatrix, visited, 0);
 		}
+	static void dfs(int adjMatrix[][],boolean [] visited, int current) {
+		
+		visited[current]  = true;
+		
+			System.out.println((char)(current+65));
+			
+			//한 정점의 인접 ㅈ정점들 체크하며 대기열에 넣기
+			for(int i = 0,size = adjMatrix.length; i<size; i++) {
+				if(adjMatrix[current][i] !=0&&!visited[i]) {
+					
+					dfs(adjMatrix, visited, i); 
+				}					
+			}
+		
+		
+	}
 		static void bfsList(Node adjList[]) {
 			int size = adjList.length;
 			Queue<Integer> queue = new ArrayDeque<>();//큐에 넣는 ㄱㅄ은 방문대상을 관리할 값과 그 밖의 값들을 넣을 수 있다.
@@ -98,6 +114,22 @@ public class AdjList {
 				}
 				
 			}
+	}
+		static void dfsList(int adjMatrix[][],boolean [] visited, int current) {
+		
+		visited[current]  = true;
+		
+			System.out.println((char)(current+65));
+			
+			//한 정점의 인접 ㅈ정점들 체크하며 대기열에 넣기
+			for(Node temp = adjlist[current]; temp !=null; temp = temp.next) {
+				if!visited[vertex]) {
+					
+					dfs(adjMatrix, visited, i); 
+				}					
+			}
+		
+		
 	}
 
 }
