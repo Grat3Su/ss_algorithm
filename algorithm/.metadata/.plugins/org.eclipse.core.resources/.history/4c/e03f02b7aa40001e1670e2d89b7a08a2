@@ -1,0 +1,11 @@
+package sw.offline0822;
+
+public class SW_1247_OptimalPath {
+	static int T,N;
+	static int arr[];
+	public static void main(String[] args) {
+		
+
+	}
+
+}

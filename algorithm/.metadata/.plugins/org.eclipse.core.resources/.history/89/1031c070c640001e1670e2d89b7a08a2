@@ -1,0 +1,13 @@
+package BOJ.algostudy;
+
+public class BOJ_15683_Security {
+	static enum Ddir {
+		Up, Right, Down, Left
+	}
+	static int[][] dir;// U R D L
+
+	public static void main(String[] args) {
+		dir = 
+	}
+
+}

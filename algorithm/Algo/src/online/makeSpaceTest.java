@@ -25,7 +25,7 @@ public class makeSpaceTest {
 			for (int c = sc; c < sc + size; c++)
 				sum += space[r][c];
 		}
-		if (sum == 0) {// 모두 하얀색 / 이거 자체가 기저조건
+		if (sum == 0) {// 모두  하얀색 / 이거 자체가 기저조건
 			white++;// <= 재귀 유도x
 		} else if (sum == size * size) {// 모두 초록/ 이거도 기저조건
 			green++;// <= 재귀 유도 x

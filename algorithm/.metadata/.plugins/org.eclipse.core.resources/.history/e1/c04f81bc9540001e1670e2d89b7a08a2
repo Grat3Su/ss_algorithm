@@ -1,0 +1,19 @@
+package sw.offline0822;
+
+public class SW_3829_서로소집합 {
+
+	public static void main(String[] args) {
+		int n = 10;
+
+	}
+	//서로소 집합을 표현하는 자료구조 생성 및 초기화
+	static void makeSet() {//집합 만들깅
+		
+	}
+	
+	//소속된 서로소 집합의 대표 원소를 리턴
+	static int findSet(int x) {//어떤 수 x에 대해 대표자 리턴 
+		
+	}
+
+}
