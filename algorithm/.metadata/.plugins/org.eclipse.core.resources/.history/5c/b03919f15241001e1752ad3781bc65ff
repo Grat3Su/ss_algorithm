@@ -1,0 +1,10 @@
+package online;
+
+public class MSTKruskalTest {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

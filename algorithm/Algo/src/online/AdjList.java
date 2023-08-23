@@ -122,12 +122,12 @@ public class AdjList {
 			System.out.println((char)(current+65));
 			
 			//한 정점의 인접 ㅈ정점들 체크하며 대기열에 넣기
-			for(Node temp = adjlist[current]; temp !=null; temp = temp.next) {
-				if!visited[vertex]) {
-					
-					dfs(adjMatrix, visited, i); 
-				}					
-			}
+//			for(Node temp = adjlist[current]; temp !=null; temp = temp.next) {
+//				if!visited[vertex]) {
+//					
+//					dfs(adjMatrix, visited, i); 
+//				}					
+//			}
 		
 		
 	}

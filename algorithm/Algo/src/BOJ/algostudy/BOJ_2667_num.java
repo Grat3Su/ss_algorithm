@@ -20,7 +20,6 @@ public class BOJ_2667_num {
 	static int[] dx = { 0, 0, 1, -1 };
 	static int[] dy = { 1, -1, 0, 0 };
 	static StringBuilder sb = new StringBuilder();
-	static Queue<int[]> queue = new ArrayDeque<int[]>();
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

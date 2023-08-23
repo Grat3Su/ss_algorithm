@@ -1,0 +1,11 @@
+package hw;
+import java.util.*;
+import java.io.*;
+public class SW_1238_Contact {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
