@@ -14,31 +14,68 @@ import java.io.*;
  */
 
 public class SW_1238_Contact {
-	static int N, S;
-	static int[] parents = new int[101];
-	static boolean[][] adjMatrix = new boolean[101][101];
-	static Node[] adjlist;
-	static PriorityQueue<Node> pqueue = new PriorityQueue<>();
-
+	static int N, S, max;
+	static List<Integer>[] edge;
+	static int[] visit;
+	static StringBuilder sb = new StringBuilder();
+	
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = new StringTokenizer(br.readLine());
-		N = Integer.parseInt(st.nextToken());
-		S = Integer.parseInt(st.nextToken());
 
-		for (int i = 0; i < N; i++) {
-			st = new StringTokenizer(br.readLine());
-			int from = Integer.parseInt(st.nextToken());
-			int to = Integer.parseInt(st.nextToken());
+		for (int t = 0; t < 1; t++) {
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			N = Integer.parseInt(st.nextToken());
+			S = Integer.parseInt(st.nextToken());
 
-			adjMatrix[from][to] = true;
+			edge = new ArrayList[101];
+			visit = new int[101];
+			max = 0;
+
+			for (int i = 0; i < 101; i++) {
+				edge[i] = new ArrayList<>();
+			}
+
+			st = new StringTokenizer(br.readLine()," ");
+			for (int i = 0; i < N/2; i++) {
+				int from = Integer.parseInt(st.nextToken());
+				int to = Integer.parseInt(st.nextToken());
+				edge[from].add(to);
+			}
+			
+			visit[S]=1;
+
+			bfs(S);
+			
+			sb.append("#").append(t+1).append(" ").append(max).append("\n");
+			
 		}
-
-		bfs(S);
+		System.out.println(sb);
 	}
 
-	static void bfs(int v) {// 시작점
+	static void bfs(int s) {// 시작점
+		ArrayDeque<Integer> queue = new ArrayDeque<>();
+		queue.offer(s);
 
+		int cnt = 0;
+		while (!queue.isEmpty()) {
+			int cur = queue.poll();
+
+			for (int i = 0; i < edge[cur].size(); i++) {
+				int v = edge[cur].get(i);
+
+				if (visit[v] != 0)
+					continue;
+
+				visit[v] = visit[cur] + 1;
+				queue.offer(v);
+			}
+			cnt = visit[cur]+1;
+		}
+		for (int i = 0; i < 101; i++) {
+			if (cnt != visit[i])
+				continue;
+			Math.max(max, i);
+		}
 	}
 
 	static class Node {
