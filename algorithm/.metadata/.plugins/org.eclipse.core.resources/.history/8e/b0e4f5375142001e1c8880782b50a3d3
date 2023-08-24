@@ -1,0 +1,75 @@
+package BOJ.offline0824;
+
+import java.util.*;
+import java.io.*;
+
+//ㅂ부분집합을 통해서 A, B 두 개의 그룹으로 나누고 각각 연결 여부를 bfs, dfs로 확인한 후 최소값 갱신
+public class BOJ_17471_Gerrymandering2 {	
+	static int N, min;
+	static int[][] matrix;
+	static boolean[] select;//부분집합 용도
+	static boolean[] visit;//bfs 중복 체크
+	
+	static Queue<Integer>queue = new ArrayDeque<Integer>();
+	public static void main(String[] args) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		N = Integer.parseInt(br.readLine());
+		matrix = new int[N+1][N+1];
+		select = new boolean[N+1];
+		visit = new boolean[N+1];
+		min = Integer.MAX_VALUE;
+		
+		//인구수 -> 별도의 자료구조 대신 matrix 정점의 맨 앞자리 더미 부분에 넣는다.
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		for(int i = 1; i<N+1; i++) {//인구
+			matrix[i][0] = Integer.parseInt(st.nextToken());
+		}
+		//그래프 인접 행렬
+		for (int i = 1; i < N+1; i++) {
+			st = new StringTokenizer(br.readLine(), " ");
+			int n = Integer.parseInt(st.nextToken());//i 인접한 구역 수
+			for(int j = 1; j<=n; i++) {
+				int v = Integer.parseInt(st.nextToken());
+				matrix[i][j]=v;
+			}
+		}
+		
+		//부분집합
+		subset(1);//정점번호 1부터 시작
+		System.out.println(min==Integer.MAX_VALUE?-1: min);
+	}
+	static void check() {
+		//두 그룹이 각각 유효한지 따짐(연결)
+		//그룹별로 따지되, 양쪽 다 연결여부를 확인
+		//bfs로 각각 갈 수 있는 곳으로 가서 visit-> true
+		//양쪽 모두 따지고 나면 visit 전체가 true가 되었는지 일부라도 false인지
+		
+		// 자료구조 초기화
+		Arrays.fill(visit, false);
+		queue.clear();
+		
+		//A - select : true
+		for(int i = 1; i<=N; i++) {
+			if(select[i]) {
+				visit[i] = true;
+				queue.offer(i)
+			}
+		}
+	}
+	static void subset(int srcIdx) {
+		if(srcIdx==N+1) {
+			//기저조건
+			//두개 구역으로 나눈 상태
+			check();
+			
+			return;
+		}
+		
+		select[srcIdx] = true;
+		subset(srcIdx+1);
+		select[srcIdx] = false;
+		subset(srcIdx+1);
+		
+	}
+
+}

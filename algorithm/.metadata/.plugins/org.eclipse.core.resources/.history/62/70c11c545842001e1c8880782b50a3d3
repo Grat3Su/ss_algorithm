@@ -1,0 +1,14 @@
+package hw;
+///https://www.acmicpc.net/problem/15961
+
+import java.util.*;
+import java.io.*;
+public class BOJ_15961_Sushi {
+	static int N,D,K,C;
+	public static void main(String[] args) {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+
+	}
+
+}

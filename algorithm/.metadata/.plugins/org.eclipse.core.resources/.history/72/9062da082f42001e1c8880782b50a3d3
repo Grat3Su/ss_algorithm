@@ -1,0 +1,13 @@
+package BOJ.algostudy;
+
+import java.util.*;
+import java.io.*;
+
+public class BOJ_16236_BabyShark {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}
