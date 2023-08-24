@@ -32,20 +32,40 @@ public class BOJ_15961_Sushi {
 		K = Integer.parseInt(st.nextToken());
 		C = Integer.parseInt(st.nextToken());
 		max = 0;
-		sushi = new int[D];
+		sushi = new int[D+1];
 		rail = new int[N];
 		for(int i = 0; i<N; i++) {
 			st = new StringTokenizer(br.readLine());
 			rail[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		for(int i = 0; i<N; i++) {
-			if(i>=K)	sushi[rail[i-K]]--;
-			
-			sushi[rail[i]]++;
-				
+		for(int i = 0; i<N; i++) {			
+			sushi[rail[i]]++;//현재 레일의 값을 스시배열에 +1해준다
+			if(i>=K) {
+				check();
+				sushi[rail[i-K]]--;// K보다 크면 지나친 스시 값을 뺜다
+			}
 		}
-		
+		System.out.println(max);
 	}
+	
+	static void check() {
+		int count = 0;
+		boolean c = false;
+		for(int d =0 ; d<D+1; d++) {//해당칸에 있나 없나를 체크
+			if(sushi[d]>0) {
+				count++;
+				if(d == C) {//쿠폰
+					c = true;
+				}
+			}
+		}
+		if(!c)
+			count++;
+		
+		max = Math.max(max, count);
+	}
+	
+	
 
 }
