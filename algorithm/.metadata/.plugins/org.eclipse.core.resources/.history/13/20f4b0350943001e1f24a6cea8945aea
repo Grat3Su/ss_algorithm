@@ -1,0 +1,23 @@
+package BOJ.offline_0825;
+import java.util.*;
+import java.io.*;
+
+public class BOJ_17281_Baseball {
+	static int N;
+	static int[][] inning;
+	
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		N = Integer.parseInt(br.readLine());
+
+		inning = new int[9][N];
+		for(int i = 0; i<9; i++) {
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			for(int j = 0; j<N; j++) {
+				
+			}
+		}
+
+	}
+
+}

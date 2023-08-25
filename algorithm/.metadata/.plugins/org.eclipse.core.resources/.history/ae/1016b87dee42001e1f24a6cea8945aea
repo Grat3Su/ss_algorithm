@@ -1,0 +1,25 @@
+package online;
+import java.util.*;
+import java.io.*;
+import java.nio.Buffer;
+public class DijkstraTest {
+	static class Node{
+		int vertex, weight;//정점의 번호와 가중치
+		Node next;
+		public Node(int vertex, int weight, Node next) {
+			super();
+			this.vertex = vertex;
+			this.weight = weight;
+			this.next = next;
+		}
+		
+	}
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		int V = Integer.parseInt(st.nextToken());//정점 갯수
+		int E = Integer.parseInt(st.nextToken());//간선 갯수
+		
+	}
+
+}

@@ -1,0 +1,12 @@
+package online;
+
+public class DijkstraTest {
+	static class Node{
+		int vertex, weight;//정점의 번호와 가중치
+	}
+	public static void main(String[] args) {
+		
+
+	}
+
+}
