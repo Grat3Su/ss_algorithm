@@ -1,0 +1,32 @@
+package A형대비;
+import java.util.*;
+import java.io.*;
+
+/*
+ * 테스트케이스
+ * T
+ * N
+ * Arr
+ * 1  
+7    
+0 0 1 0 0 0 0
+0 0 1 0 0 0 0
+0 0 0 0 0 1 0
+0 0 0 0 0 0 0
+1 1 0 1 0 0 0
+0 1 0 0 0 0 0
+0 0 0 0 0 0 0
+ */
+public class SW_1767_processor {
+	static int T,N,size,min;
+	static int[][] map;
+	static int[] dx = {-1,1,0,0};
+	static int[] dy = {0,0,-1,1};
+	static boolean[] visit;
+	public static void main(String[] args) throws Exception{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		T = Integer.parseInt(br.readLine());
+
+	}
+
+}

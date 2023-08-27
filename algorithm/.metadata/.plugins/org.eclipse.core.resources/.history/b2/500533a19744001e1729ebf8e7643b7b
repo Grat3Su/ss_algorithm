@@ -1,0 +1,11 @@
+package A형대비;
+import java.util.*;
+
+public class BOJ_13460_BizEscape {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

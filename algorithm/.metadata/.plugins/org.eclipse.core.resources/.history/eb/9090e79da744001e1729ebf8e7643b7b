@@ -1,0 +1,38 @@
+package A형대비;
+import java.util.*;
+import java.io.*;
+/* 최소 몇번만에 빨간 구슬이 탈출 할 수 있는가
+ * 테스트 케이스
+ * N M 세로 가로
+ * Map
+ * 5 5
+#####
+#..B#
+#.#.#
+#RO.#
+#####
+ */
+public class BOJ_13460_BizEscape {
+	static int N,M;
+	static int[][] map;
+	static Queue<int[][]> queue = new ArrayDeque<>();
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
+		
+		for(int i = 0; i<M; i++) {
+			st = new StringTokenizer(br.readLine());
+			for(int j = 0; j<N; j++) {
+				map[i][j] = Integer.parseInt(st.nextToken()); 
+				if(map[i][j] =='R')	queue.offer(map[i][j]);
+			}
+		}
+	}
+	
+	static void bfs() {
+	}
+
+}

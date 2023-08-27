@@ -1,0 +1,11 @@
+package A형대비;
+import java.util.*;
+import java.io.*;
+public class SW_1767_processor {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

@@ -1,0 +1,67 @@
+package A형대비;
+
+import java.util.*;
+import java.io.*;
+
+/*
+ * 테스트케이스
+ * T
+ * N
+ * Arr
+ * 1  
+7    
+0 0 1 0 0 0 0
+0 0 1 0 0 0 0
+0 0 0 0 0 1 0
+0 0 0 0 0 0 0
+1 1 0 1 0 0 0
+0 1 0 0 0 0 0
+0 0 0 0 0 0 0
+ */
+public class SW_1767_processor {
+	static int T, N, coreSize, min;
+	static int[][] map;
+	static int[] dx = { -1, 1, 0, 0 };
+	static int[] dy = { 0, 0, -1, 1 };
+	static List<Core> coreList;
+	static boolean[] visit;
+
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		T = Integer.parseInt(br.readLine());
+		StringBuilder sb = new StringBuilder();
+		for (int t = 0; t < T; t++) {
+			N = Integer.parseInt(br.readLine());
+
+			// 초기화
+			map = new int[N][N];
+			coreList = new ArrayList<>();
+			min = Integer.MAX_VALUE;
+
+			for (int i = 0; i < N; i++) {
+				StringTokenizer st = new StringTokenizer(br.readLine());
+				for (int j = 0; j < N; j++) {
+					map[i][j] = Integer.parseInt(st.nextToken());
+					if(map[i][j]==1) {
+						core[size++] = new Core(i,j);
+					}
+				}
+				
+				
+			}
+			sb.append("#").append(t+1).append(" ").append(min).append("\n");
+		}
+		System.out.println(sb);
+	}
+
+	static class Core {
+		int x, y;
+
+		public Core(int x, int y) {
+			super();
+			this.x = x;
+			this.y = y;
+		}
+	}
+
+}
