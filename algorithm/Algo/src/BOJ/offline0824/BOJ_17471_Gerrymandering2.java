@@ -96,8 +96,7 @@ public class BOJ_17471_Gerrymandering2 {
 		if(srcIdx==N+1) {
 			//기저조건
 			//두개 구역으로 나눈 상태
-			check();
-			
+			check();			
 			return;
 		}
 		

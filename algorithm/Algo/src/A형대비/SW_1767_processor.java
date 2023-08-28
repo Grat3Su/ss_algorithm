@@ -1,4 +1,4 @@
-
+package A형대비;
 
 import java.util.*;
 import java.io.*;
