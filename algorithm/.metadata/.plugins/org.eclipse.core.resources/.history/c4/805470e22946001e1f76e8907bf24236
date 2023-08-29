@@ -1,0 +1,20 @@
+package basic.dp;
+
+public class fibonacci {
+
+	public static void main(String[] args) {
+		long result = fibo_rc(5);
+		System.out.println(result);
+
+	}
+//단순 재귀 호출
+	static long fibo_rc(int n) {
+		if(n==1||n==2) return 1;
+		
+		return fibo_rc(n-1)+fibo_rc(n-2);
+	}
+	
+	//memoi
+	
+	//dp
+}

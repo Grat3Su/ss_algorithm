@@ -1,0 +1,16 @@
+package online;
+
+public class FiboTest {
+	static long totalCnt1,totalCnt2,callCnt1[], callCnt2, memo;
+	static long fibo1(int n) {
+		totalCnt1++;
+		callCnt1[n]++
+		if(n<2) return n;
+		return fibo1(n-1)+fibo1(n-2);
+	}
+	public static void main(String[] args) {
+		
+
+	}
+
+}

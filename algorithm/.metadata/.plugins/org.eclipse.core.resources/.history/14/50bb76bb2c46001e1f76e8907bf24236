@@ -1,0 +1,14 @@
+package BOJ.offline0829;
+
+import java.util.*;
+import java.io.*;
+public class SetOne {
+
+	public static void main(String[] args) {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int N = Integer.parseInt(br.readLine());
+		
+
+	}
+
+}

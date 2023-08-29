@@ -1,0 +1,44 @@
+package BOJ.offline0829;
+
+import java.util.*;
+import java.io.*;
+
+public class SetOne {
+	static int min;
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int N = Integer.parseInt(br.readLine());
+		long count = 0;
+		min = Integer.MAX_VALUE;
+		while (N > 1) {
+			if (N % 6 == 0) {
+				count += 2;
+				N /= 6;
+			} else if (N % 2 == 0) {
+				count += 1;
+				N /= 2;
+
+			} else if (N % 3 == 0) {
+				count += 1;
+				N /= 3;
+			} else {
+				count += 1;
+				N -= 1;
+			}
+		}
+		molu(N,0);
+		System.out.println(min);
+	}
+	
+	static void molu(int n,int count) {
+		if(n<2) {
+			Math.min(count, min);
+			return;		
+		}
+		
+		if(n%3==0)molu(n/3,count);
+		if(n%2==0)molu(n/2,count);
+		molu(n-1,count);
+	}
+
+}
