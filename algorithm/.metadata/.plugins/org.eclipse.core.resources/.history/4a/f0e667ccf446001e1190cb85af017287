@@ -1,0 +1,11 @@
+package BOJ.offline0830;
+import java.util.*;
+import java.io.*;
+public class BOJ_17070_MovePipe {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

@@ -1,0 +1,14 @@
+package online;
+
+import java.util.Scanner;
+
+public class MinCoinTest {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int money = sc.nextInt();//교환금액
+		int[] D = new int[money+1];//금액 n에 대한 최소 동전 수
+
+	}
+
+}

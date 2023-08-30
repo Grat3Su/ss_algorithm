@@ -1,0 +1,11 @@
+package BOJ.offline0830;
+import java.io.*;
+import java.util.*;
+public class BOJ_1010_PutBridge {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

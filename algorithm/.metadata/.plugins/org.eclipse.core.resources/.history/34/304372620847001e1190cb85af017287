@@ -1,0 +1,22 @@
+package BOJ.offline0830;
+//bfs
+//K<- 몇 번 사용했는지, visit 추가 관리
+public class BOJ_1600_monkey {
+	static int K,W,H;
+	static int[][] map;
+	static boolean[][][] visit;//k가 추가됨
+	
+	//상하좌우
+	static int[] dy = {-1,1,0,0};
+	static int[] dx = {0,0,-1,1};
+	
+	//격자 말
+	static int[] hdy = {-2, -2, -1, -1, 2,  2, 1,  1};
+	static int[] hdx = { 1, -1,  2, -2, 1, -1, 2, -2};
+	
+	public static void main(String[] args) {
+		
+
+	}
+
+}
