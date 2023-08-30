@@ -1,0 +1,14 @@
+package hw;
+import java.util.*;
+import java.io.*;
+public class BOJ_10971_외판원순회2 {
+	static int N;
+	static int[][] map;
+	static long min;
+	static boolean visit;
+	public static void main(String[] args) {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		min = Integer.MAX_VALUE;
+	}
+
+}
