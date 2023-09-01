@@ -94,7 +94,7 @@ public class BOJ_16236_BabyShark2 {
 		}
 
 		visit[x][y] = true;
-		for (int i = 0; i < N; i++) {
+		for (int i = 0; i < 4; i++) {
 			if (x+ dx[i] >= N || y + dy[i] >= N || x+ dx[i] < 0 || y + dy[i] < 0||visit[x + dx[i]][y + dy[i]])
 				continue;
 			find_dfs(x + dx[i], y + dy[i]);

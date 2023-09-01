@@ -57,13 +57,37 @@ public class BOJ_11559_PuyoPuyo {
 	
 	static void puyopuyo() {
 		// 터지는 뿌요 찾기
-		
+		bfs();
 		// 내리기
 	}
 
-	static void bfs(int x, int y) {
+	static void bfs() {
 		Queue<int[]> q = new ArrayDeque<int[]>();
-		q.offer(e)
+		Queue<int[]> popPuyo = new ArrayDeque<>();
+		int x = puyo[0];
+		int y = puyo[1];
+		q.offer(new int[] {x,y});
+		popPuyo.offer(new int[] {x,y});
+		while(!q.isEmpty()) {
+			int[] num = q.poll();
+			
+			for(int i = 0; i<4; i++) {
+				x = num[0]+dx[i];
+				y = num[1]+dy[i];
+				
+				if(x>=M||x<0||y>=N||y<0) continue;
+				
+				q.offer(new int[] {x,y});
+				popPuyo.offer(new int[] {x,y});
+				
+			}
+					
+		}
+		if(popPuyo.size()>3) {
+			while(!popPuyo.isEmpty()) {
+				int[] pos = popPuyo.poll();
+			}
+		}
 	}
 
 }
