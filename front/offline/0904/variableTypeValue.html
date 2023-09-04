@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var 한글 = "안녕하ㅔ용";
+        console.log(한글);
+        var a;
+        console.log(a);//undefined : 선언 후 값이 지정되지 않은 상태. null이랑은 다름
+        var b = null;
+        console.log(b);//null : 객체가 지정되지 않은 변수. 아무런 객체를 가리키고 있지 않다.
+
+        //== 값을 비교
+        //=== 값과 타입 모두 비교
+        console.log(a==b);//둘다 값이 없어서 같은 취급
+        console.log(a===b);//타입은 다른 취급
+
+        console.log(typeof a);
+        console.log(typeof b);
+        console.log(typeof(typeof b));//타입오브는 문자열을 리턴해서 string
+
+        console.log(typeof a == typeof b);
+        console.log(typeof a === typeof b);
+
+        let x;
+        if(x===undefined) console.log(1);
+        if(typeof x==="undefined") console.log(2);
+        console.log(typeof x);
+    </script>
+</body>
+</html>

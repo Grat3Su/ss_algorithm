@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //object {}
+        let student={
+            name: '홍길동',
+            major: '컴퓨터 공학'
+        }
+        console.log(student);
+
+        //property 추가
+        student.phone = '010-0000-0000';
+        console.log(student);
+
+        //property 삭제
+        delete student.major;
+        console.log(student);
+
+        //property 조회
+        console.log(student.name);//.
+        console.log(student['name']);//[""] 사용
+
+        //array [,,]
+        let students = [
+            {
+                name: '홍길동',
+                major: '컴퓨터 공학'
+            },
+            {
+                name: '이길동',
+                major: '물리학'
+            },
+            {
+                name: '삼길동',
+                major: '수학'
+            },];//object array
+
+            //element 추가ㅣ
+            
+            students.push({name : '잉', major :'몰?루'});
+            console.log(students);
+            console.log(students.length);
+            
+            delete students[0];//해당 위치의 값을 empty로 변경 java에서  null처리한거같음
+            console.log(students);
+            console.log(students.length);
+            
+             students.splice(0,1);
+             console.log(students);
+             console.log(students.length);
+
+            // console.log(JSON.stringify(student));
+            // console.log(JSON.stringify(students));
+            // let s = "{name: '이길동', major: '물리학'},"
+            // let s2 = "{ name: '이길동', major: '물리학' },"
+
+            // let s3 = JSON.parse(s);
+            // let s4 = JSON.parse(s2);
+            // console.log(s3);
+            // console.log(s4);
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //pass value <- value copy
+        function changeNum(num){
+            num=20;
+        }
+    
+        let num = 10;
+        changeNum(num);
+        console.log(num);
+
+        //pass by value <= str reference value copy
+        function changeStr(str){
+            str='World';
+        }
+        let str = 'Hello';
+        changeNum(str);
+        console.log(str);
+
+        let car ={name: '현대'}
+        //pass by value <- obj
+        function changeName(obj){
+            obj.name = '기아';
+        }
+        changeName(car);
+        console.log(car);
+
+    </script>
+</body>
+</html>

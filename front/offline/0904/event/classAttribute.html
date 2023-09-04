@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #shape{
+            width: 400px;
+            height: 400px;
+            border: 1px solid lightsalmon;
+            cursor: pointer;
+        }
+        .circle{
+            border-radius: 50%;
+        }
+
+        .rect{
+            border-radius: 0%;
+        }
+
+        .rounded-rect{
+            border-radius: 15%;
+        }
+
+        .bg-black{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="shape"></div>
+    <hr>
+    <button id="btnCircle" data-click-count="0">circle</button>
+    <button id="btnRect" data-click-count="0">rect</button>
+    <button id="btnRoundedRect" data-click-count="0">rounded-rect</button>
+    <hr>
+    <button id="btnClickCountInfo">click count info</button>
+    <p id="pCountInfo">버튼을 click 하세요.</p>
+
+    <script>
+        var shape;
+        window.onload = function(){//실행해야할 코드
+            shape = document.querySelector("#shape");
+
+            document.querySelector("#btnCircle").addEventListener("click", function(){
+                shape.classList.add("circle");
+            })
+            document.querySelector("#btnRect").addEventListener("click", function(){
+                shape.classList.add("rect");
+            })
+        }//윈도우가 모두 로드되었다
+    </script>
+
+</body>
+</html>

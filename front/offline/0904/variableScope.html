@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //global scope
+        var a = 5;//scope와 무관
+        
+        let b = 10;// let, const -> scoped variable
+        const c = 100;//
+
+        {//scope
+            console.log(b);
+            let b = 20;
+        }
+    </script>
+
+</body>
+</html>

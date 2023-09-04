@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #content{
+            border: 1px solid lightcoral;
+            min-height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h4 id="title"> 제목임당</h4>
+        <p id="content">내용임다</p>
+        <hr>
+        <button onclick="func1()">제목변경</button><!--inline event handler call-->
+        <button id="btn2">내용 변경</button>
+        <button id="btn3">테두리 변경</button>
+    </div>
+
+    <script>
+        //event target : event 발생 element
+        //event handler (listener):발생된 event 처리자(function)
+        //event 종류 : click, mouserover, submit...ㅇ
+        function func1(){
+            document.querySelector("#title").innerText = "제목이 변경되었습니다.";
+        }
+
+        //#2 on~~~
+        //event target. on = func에 연결
+        document.querySelector("#btn2").onclick = function(){
+            document.querySelector("#content").innerText = "내용이 변경되었습니다.";
+        }
+        
+        //#3 
+        document.querySelector("#btn3").addEventListener("click", function(){
+            document.querySelector("#content").style.border = "1px solid blue";
+        });
+    </script>
+</body>
+</html>
