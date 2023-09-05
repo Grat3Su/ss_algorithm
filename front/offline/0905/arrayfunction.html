@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const players =['손흥민','이강인','이승우','김민재'];
+
+        //for-index 기반
+        // for(let i = 0; i<players.length; i++){
+        //     let player = players[i];
+        //     console.log(player);
+        // }
+
+        // var print = function(player){
+        //     console.log(player);
+        // }
+        
+        // forEach()
+        // players.forEach(print);//플레이어의 리스트에 있는 요소 하나하나를 print로 넘겨라
+
+        //forEach() + func
+        // players.forEach(player=>console.log(player));
+        // players.forEach(player=>{
+        //     console.log(player)
+        //     //...
+        // });
+
+        //forEach() + func + index
+        // players.forEach((player, index)=>{
+        //     if(index!=2){
+        //         console.log(player);
+        //     }
+        // });
+
+        //map() != Map
+        //return new array with..
+        //플레이어의 항목 하나하나를 이용해 새로운 배열을 만든다
+        // const lastNames = players.map(player => player.charAt(0));
+        // console.log(lastNames);
+        // lastNames.forEach(lastNames=>console.log(lastNames));
+
+        //single chain
+        // players
+        //     .map(player=>player.charAt(0))
+        //     .forEach(lastname => console.log(lastname));
+
+        //filter
+        let nums = [1,2,3,4,5,6,7,8,9,10];
+        nums.filter(n=>n>4).forEach(n=>console.log(n));
+
+    </script>
+</body>
+</html>

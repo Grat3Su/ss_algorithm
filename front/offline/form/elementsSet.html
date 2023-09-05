@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+
+        <form id="registerForm" action="">
+          <label for="userName">이름</label><br>
+          <input id="userName" type="text"/><br>
+          <label for="userEmail">e-mail</label><br>
+          <input id="userEmail" type="email"/><br>
+      
+          <input id="male" type="radio" name="gender" value="M"><label for="male">남</label>
+          <input id="female" type="radio" name="gender" value="F" checked><label for="female">여</label><br>
+      
+          <input id="movie" type="checkbox" name="hobby" value="movie">
+          <label for="movie">영화</label>        
+          <input id="sport" type="checkbox" name="hobby" value="sport" checked>
+          <label for="sport">스포츠</label>
+          <input id="mung" type="checkbox" name="hobby" value="mung">
+          <label for="mung">멍때리기</label>
+          <br>
+          <label for="major">전공</label>  
+          <select name="major" id="major" multiple> <!-- multiple -->
+              <option value="CS">Computer Science</option>
+              <option value="HI" selected>History</option>
+              <option value="KL">Korean Language</option>
+          </select>
+          <br>
+          <label for="desc">기타</label><br>
+          <textarea name="desc" id="desc" cols="30" rows="10"></textarea>
+        </form>
+        <br>
+        <label for="userData">사용자 정보</label><br>
+        <input id="userData" type="text"/><br>
+        <button id="setName">이름</button> <button id="setEmail">e-mail</button> <button id="setDesc">기타</button>
+        <br>
+        <button id="setMale">남</button> <button id="setFemale">여</button>
+        <br>
+        <button id="setMovieOn">영화 On</button> <button id="setMovieOff">영화 Off</button> 
+        <button id="setSportOn">스포츠 On</button> <button id="setSportOff">스포츠 Off</button>
+        <button id="setMungOn">멍 On</button> <button id="setMungOff">멍 Off</button>
+        <button id="setHobbyAllOn">취미 전체 On</button> <button id="setHobbyAllOff">취미 전체 Off</button>
+        <br>
+        <button id="setCSOn">Computer Science On</button> <button id="setCSOff">Computer Science Off</button> 
+        <button id="setHIOn">History On</button> <button id="setHIOff">History Off</button> 
+        <button id="setKLOn">한국어 On</button> <button id="setKLOff">한국어 Off</button>
+        <button id="setMajorAllOn">전공 전체 On</button> <button id="setMajorAllOff">전공 전체 Off</button>
+      </div>
+
+      <script>
+        window.onload=function(){
+            document.querySelector("#setName").onclick=function(){
+             document.querySelector("#userName").value=document.querySelector("#userData").value;
+            }
+            document.querySelector("#setEmail").onclick=function(){
+             document.querySelector("#userEmail").value=document.querySelector("#userData").value;
+            }
+            document.querySelector("#setDesc").onclick=function(){
+             document.querySelector("#desc").value=document.querySelector("#userData").value;
+            }
+            document.querySelector("#setMale").onclick=function(){
+             document.querySelector("#male").checked = true;//같은 버튼 false로 놓을 필요업슴(자동처리)
+            }
+            document.querySelector("#setFemale").onclick=function(){
+             document.querySelector("#female").checked = true;//같은 버튼 false로 놓을 필요업슴(자동처리)
+            }
+
+            //체크받ㄱ스
+            document.querySelector("#setMovieOn").onclick=function(){
+                document.querySelector("#movie").checked = true;//같은 버튼 false로 놓을 필요업슴(자동처리)
+            }
+            document.querySelector("#setMovieOff").onclick=function(){
+                document.querySelector("#movie").checked = false;//같은 버튼 false로 놓을 필요업슴(자동처리)
+            }
+            document.querySelector("#setSportOn").onclick=function(){
+                document.querySelector("#sport").checked = true;//같은 버튼 false로 놓을 필요업슴(자동처리)
+            }
+            document.querySelector("#setSportOff").onclick=function(){
+                document.querySelector("#sport").checked = false;//같은 버튼 false로 놓을 필요업슴(자동처리)
+            }
+            document.querySelector("#setMungOn").onclick=function(){
+                document.querySelector("#mung").checked = true;//같은 버튼 false로 놓을 필요업슴(자동처리)
+            }
+            document.querySelector("#setMungOff").onclick=function(){
+                document.querySelector("#mung").checked = false;//같은 버튼 false로 놓을 필요업슴(자동처리)
+            }
+            document.querySelector("#setHobbyAllOn").onclick=function(){
+
+                //아래의 개별적인 코드보다 한번에 처리하는게 바람직
+                // document.querySelector("#movie").checked = true;
+                // document.querySelector("#sport").checked = true;
+                // document.querySelector("#mung").checked = true;//같은 버튼 false로 놓을 필요업슴(자동처리)
+                document.querySelectorAll("input[name='hobby']").forEach(el=>el.checked = true);
+            }
+            document.querySelector("#setHobbyAllOff").onclick=function(){
+                // document.querySelector("#movie").checked = false;
+                // document.querySelector("#sport").checked = false;
+                // document.querySelector("#mung").checked = false;//같은 버튼 false로 놓을 필요업슴(자동처리)
+                document.querySelectorAll("input[name='hobby']").forEach(el=>el.checked = false);
+            }
+            
+            document.querySelector("#setCSOn").onclick=function(){
+                document.querySelector("#major option[value='CS']").selected = true;//같은 버튼 false로 놓을 필요업슴(자동처리)
+            }
+            document.querySelector("#setCSOff").onclick=function(){
+                document.querySelector("#major option[value='CS']").selected = false;//같은 버튼 false로 놓을 필요업슴(자동처리)
+            }
+            document.querySelector("#setHIOn").onclick=function(){
+                document.querySelector("#major option[value='HI']").selected = true;//같은 버튼 false로 놓을 필요업슴(자동처리)
+            }
+            document.querySelector("#setHIOff").onclick=function(){
+                document.querySelector("#major option[value='HI']").selected = false;//같은 버튼 false로 놓을 필요업슴(자동처리)
+            }
+            document.querySelector("#setKLOn").onclick=function(){
+                document.querySelector("#major option[value='KL']").selected = true;//같은 버튼 false로 놓을 필요업슴(자동처리)
+            }
+            document.querySelector("#setKLOff").onclick=function(){
+                document.querySelector("#major option[value='KL']").selected = false;//같은 버튼 false로 놓을 필요업슴(자동처리)
+            }
+            document.querySelector("#setMajorAllOn").onclick=function(){            
+                document.querySelectorAll("#major option").forEach(el=>el.selected = true);
+            }
+            document.querySelector("#setMajorAllOff").onclick=function(){
+                document.querySelectorAll("#major option").forEach(el=>el.selected = false);
+            }
+        }
+        </script>
+</body>
+</html>

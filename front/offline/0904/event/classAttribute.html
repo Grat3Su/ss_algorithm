@@ -42,14 +42,44 @@
         var shape;
         window.onload = function(){//실행해야할 코드
             shape = document.querySelector("#shape");
+            //arrow function을 이벤트 리스너로 사용할 경우, this binding X
+            //event 객체를 parameter로 전달받아서 event 객체, .target으로 접근할 수 있다.
 
-            document.querySelector("#btnCircle").addEventListener("click", function(){
+            document.querySelector("#btnCircle").addEventListener("click", (e)=>{
+                shape.classList.remove("rect","rounded-rect");
                 shape.classList.add("circle");
+                //클릭된게 this
+                e.target.setAttribute("data-click-count", parseInt(e.target.getAttribute("data-click-count"))+1);
             })
-            document.querySelector("#btnRect").addEventListener("click", function(){
+            document.querySelector("#btnRect").addEventListener("click", (e)=>{
+                shape.classList.remove("circle","rounded-rect");
                 shape.classList.add("rect");
+                e.target.setAttribute("data-click-count", parseInt(e.target.getAttribute("data-click-count"))+1);                
             })
-        }//윈도우가 모두 로드되었다
+            document.querySelector("#btnRoundedRect").addEventListener("click", (e)=>{
+                shape.classList.remove("rect","circle");
+                shape.classList.add("rounded-rect");
+                e.target.setAttribute("data-click-count", parseInt(e.target.getAttribute("data-click-count"))+1);
+                
+            })
+            shape.addEventListener("mouseover", function(){
+                shape.classList.toggle("bg-black");
+            });
+            
+            shape.addEventListener("mouseout", function(){
+                shape.classList.toggle("bg-black");
+            });
+            
+            document.querySelector("#btnClickCountInfo").addEventListener("click", function(){
+                let click1 = document.querySelector("#btnCircle").getAttribute("data-click-count");
+                let click2 = document.querySelector("#btnRect").getAttribute("data-click-count");
+                let click3 = document.querySelector("#btnRoundedRect").getAttribute("data-click-count");
+                
+                document.querySelector("#pCountInfo").innerText=
+                `클릭한 횟수는 circle(${click1}), rect(${click2}), rounded-rect(${click3})입니다`;
+            })
+        };//윈도우가 모두 로드되었다
+
     </script>
 
 </body>

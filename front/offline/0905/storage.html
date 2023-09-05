@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper{
+            width: 800px;
+            margin: auto;
+        }
+    
+        #wrapper input, textarea{
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div>
+            <label for="name">이름</label><br><input id="name" type="text">
+        </div>
+        <div>
+            <label for="phone">전화번호</label><br><input id="phone" type="text">
+        </div>
+        <div>
+            <label for="desc">기타</label><br>
+            <textarea id="desc" rows="10"></textarea>
+        </div>
+        <div>
+            <button id="btnSave">저장하기</button>
+            <button id="btnLoad">가져오기</button>
+            <button id="btnSaveObject">객체 저장하기</button>
+            <button id="btnLoadObject">객체 가져오기</button>
+            <button id="btnClearPhone">전화번호 지우기</button>
+            <button id="btnClearAll">모두 지우기</button>
+            <button id="btnInitForm" style="float:right;">폼 초기화</button>
+        </div>        
+    </div>
+    <script>
+        window.onload=function(){
+            document.querySelector("#btnSave").onclick=function(){
+                localStorage.setItem("name",document.querySelector("#name").value);
+                localStorage.setItem("phone",document.querySelector("#phone").value);
+                sessionStorage.setItem("desc",document.querySelector("#desc").value);
+            }
+            document.querySelector("#btnLoad").onclick=function(){
+                document.querySelector("#name").value = localStorage.getItem("name");
+                document.querySelector("#phone").value = localStorage.getItem("phone");
+                document.querySelector("#desc").value = sessionStorage.getItem("desc");
+            }
+            document.querySelector("#btnSaveObject").onclick=function(){
+                let obj = {};
+                obj.name = document.querySelector("#name").value;
+                obj.phone = document.querySelector("#phone").value;
+                obj.desc = document.querySelector("#desc").value;
+
+                localStorage.setItem("obj",JSON.stringify(obj));
+            }
+            document.querySelector("#btnLoadObject").onclick=function(){
+                let obj = JSON.parse(localStorage.getItem("obj"));
+
+                document.querySelector("#name").value = obj.name;
+                document.querySelector("#phone").value = obj.phone;
+                document.querySelector("#desc").value = obj.desc;
+            }
+            //하나 지우기
+            document.querySelector("#btnClearPhone").onclick=function(){
+                let obj = JSON.parse(localStorage.getItem("obj"));
+
+                localStorage.removeItem("phone");
+            }
+            //모두 지우기
+            document.querySelector("#btnClearAll").onclick=function(){
+                localStorage.clear();
+                sessionStorage.clear();
+            }
+            //form 지우기
+            document.querySelector("#btnInitForm").onclick=function(){
+                document.querySelector("#name").value ='';
+                document.querySelector("#phone").value='';
+                document.querySelector("#desc").value ='';
+            }
+        }
+
+    </script>
+</body>
+</html>
