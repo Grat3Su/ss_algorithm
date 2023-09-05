@@ -39,32 +39,34 @@ public class BOJ_18352_Kdistance {
 			int from = Integer.parseInt(st.nextToken());
 			adjList[to].add(from);
 		}
-		visited[X] = true;
-		dfs(X,0);
-		
-		for(int i = 0; i<N; i++) {
-			if(minDis[i]==K) {
-				sb.append(i).append("\n");				
-			}
-		}
+		minDis[X] = 0;//시작
+		bfs(X);
 		
 		if(sb.length()==0)
 			sb.append(-1);
 		System.out.println(sb);
 	}
-	static void dfs(int v, int cnt) {
-		if(v >= N)return;
-		minDis[v] = Math.min(minDis[v], cnt);
-		if(cnt == K) {//가지치기
-			return;
-		}
-		visited[v] = true;
-		for(int i = 0; i<adjList[v].size(); i++) {//간선이 존재한다면 거기로 간다			
-			if(!visited[adjList[v].get(i)]) {
-				dfs(adjList[v].get(i),cnt+1);
+	static void bfs(int v) {		
+		Queue<Integer> q = new ArrayDeque<>();
+		q.add(v);
+		
+		while(!q.isEmpty()) {
+			int x = q.poll();
+			
+			if(visited[x])continue;
+			visited[x]=true;
+			if(minDis[x]>K)	break;
+			if(minDis[x]==K)
+				sb.append(x).append("\n");
+			
+			for(int i = 0; i<adjList[x].size(); i++) {//현재 노드에 대한 연결 탐색
+				int dis=adjList[x].get(i);//다음	노드
+				//if(visited[dis])continue;
+				if(minDis[dis]!=Integer.MAX_VALUE) continue;//방문했다
+				
+				minDis[dis] = Math.min(minDis[x]+1,minDis[dis]);//다음 v = 현재 거리+1
+	            q.add(dis);
 			}
 		}
-		visited[v] = false;//방문체크
 	}
-
 }
