@@ -14,7 +14,7 @@ import java.util.*;
  */
 public class BOJ_18352_Kdistance {
 	static int N, M, K, X;
-	static List<Integer>[]  adjList;
+	static List<Integer>[]  adjList;	
 	static boolean[] visited;
 	static int[] minDis;
 	static StringBuilder sb = new StringBuilder();
@@ -42,11 +42,15 @@ public class BOJ_18352_Kdistance {
 		minDis[X] = 0;//시작
 		bfs(X);
 		
+		for(int i:pq) {
+			sb.append(i).append("\n");
+			}
 		if(sb.length()==0)
 			sb.append(-1);
 		System.out.println(sb);
 	}
-	static void bfs(int v) {		
+	static PriorityQueue<Integer>pq = new PriorityQueue<>();
+	static void bfs(int v) {
 		Queue<Integer> q = new ArrayDeque<>();
 		q.add(v);
 		
@@ -56,15 +60,17 @@ public class BOJ_18352_Kdistance {
 			if(visited[x])continue;
 			visited[x]=true;
 			if(minDis[x]>K)	break;
-			if(minDis[x]==K)
-				sb.append(x).append("\n");
+			if(minDis[x]==K) {
+				//sb.append(x).append("\n");
+				pq.add(x);
+			}
 			
 			for(int i = 0; i<adjList[x].size(); i++) {//현재 노드에 대한 연결 탐색
 				int dis=adjList[x].get(i);//다음	노드
 				//if(visited[dis])continue;
 				if(minDis[dis]!=Integer.MAX_VALUE) continue;//방문했다
 				
-				minDis[dis] = Math.min(minDis[x]+1,minDis[dis]);//다음 v = 현재 거리+1
+				minDis[dis] = Math.min(minDis[x]+1,minDis[dis]);//다음 v = 현재 거리+1 or 다음거리
 	            q.add(dis);
 			}
 		}
