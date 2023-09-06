@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hide Show</title>
+    <style>
+        #wrapper{
+            width: 300px;
+        }
+
+        #wrapper ul{
+            width: 100%;
+            padding-left: 0px;
+        }
+
+        #wrapper ul li{
+            list-style: none;;
+            text-align: center;
+        }
+
+        #wrapper ul li .sub-item li{
+            border: 1px solid lightsalmon;
+            margin: 3px 0px;
+        }
+
+        button{
+            width: 100%;
+        }
+
+        .open{
+            display: block;
+        }
+        .close{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="wrapper">
+        <button id="btnMain" data-open="N" data-open-count="0">모두 열기</button>
+        <ul>
+            <li class="item">
+                <button class="btn-sub" data-target-id="#sub-1">아이템 1</button>
+                <ul id="sub-1" class="sub-item close">
+                    <li>sub item 1 1</li>
+                    <li>sub item 1 2</li>
+                </ul>
+            </li>
+            <li class="item">
+                <button class="btn-sub" data-target-id="#sub-2">아이템 2</button>                
+                <ul id="sub-2" class="sub-item close">
+                    <li>sub item 2 1</li>
+                    <li>sub item 2 2</li>
+                </ul>
+            </li>
+            <li class="item">
+                <button class="btn-sub" data-target-id="#sub-3">아이템 3</button>
+                <ul id="sub-3" class="sub-item close">
+                    <li>sub item 3 1</li>
+                    <li>sub item 3 2</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+
+    <script>
+        // 전체의 상태가 바뀌는 경우는 2가지
+        // #1 맨위 btnMain 을 눌렀을 때
+        // #2 각 sub 가 닫히거나 열리면서 <- checkMain()
+        let btnMain;
+
+        window.onload = function(){
+            
+            // btnMain
+            btnMain = document.querySelector("#btnMain");
+
+            btnMain.addEventListener("click", function(){
+                // 현재 open 이 Y 이면 모두 열기로 label 을 바꾸고 모두 닫는다.
+                // 모두 닫힌 상태이므로 open 을 N 으로 바꿔주고 openCount 도 0 으로 변경한다.
+                // 현재 open 이 N 이면 모두 닫기로 label 을 바꾸고 모두 연다.
+                // 모두 열린 상태이므로 open 을 Y 으로 바꿔주고 openCount 도 3 으로 변경한다.
+                let open = this.getAttribute("data-open");
+                let innerText = open == "Y" ? "모두 열기" : "모두 닫기";
+                let openCount = open == "Y" ? "0" : "3";
+                
+                if( open == "Y" ){ // label 은 모두 열기 - sub 는 모두 닫기
+                    document.querySelectorAll(".sub-item").forEach( sub => {
+                        sub.classList.remove("open");
+                        sub.classList.add("close");
+                    });
+                }else if( open == "N" ){ // label 은 모두 닫기 - sub 는 모두 열기
+                    document.querySelectorAll(".sub-item").forEach( sub => {
+                    sub.classList.remove("close");
+                    sub.classList.add("open");
+                    });
+                }
+                // open 값 반대로
+                open = open == "Y" ? "N" : "Y";
+
+                this.setAttribute("data-open", open);
+                this.setAttribute("data-open-count", openCount);
+                this.innerText = innerText;
+            });
+
+            // sub-item
+            document.querySelectorAll(".btn-sub").forEach( btn => {
+                btn.addEventListener("click", function(){
+                    toggleSub( this.getAttribute("data-target-id") );
+                    
+                })
+            });
+
+            // sub 상태를 반대로 바꾸고 전체 sub의 열고 닫힌 개수에 의해 title 및 data-open 값 변경
+            function toggleSub(targetId){
+                
+                let target = document.querySelector(targetId);
+
+                if( target.classList.contains("close") ){
+                    target.classList.remove("close");
+                    target.classList.add("open");
+                    btnMain.setAttribute( "data-open-count", parseInt( btnMain.getAttribute("data-open-count") ) + 1);
+                }else if( target.classList.contains("open") ){
+                    target.classList.remove("open");
+                    target.classList.add("close");
+                    btnMain.setAttribute( "data-open-count", parseInt( btnMain.getAttribute("data-open-count") ) - 1);
+                }
+
+                checkMain();
+            }
+
+            function checkMain(){
+
+                let openCount = parseInt( btnMain.getAttribute("data-open-count") );
+                
+                console.log(btnMain.getAttribute("data-open-count"));
+                if( openCount == 0 ){
+                    btnMain.innerText = "모두 열기";
+                    btnMain.setAttribute("data-open", "N");
+                }else if( openCount == 3 ){
+                    btnMain.innerText = "모두 닫기";
+                    btnMain.setAttribute("data-open", "Y");
+                }
+            }
+        }
+    </script>
+</body>
+</html>

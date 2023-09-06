@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>항목 만들기</h4>
+    <button id="btnAdd">추가</button>
+    <div id="container"> </div>
+    
+    <script>
+        window.onload = function(){
+            document.querySelector("#btnAdd").addEventListener("click", function(){
+                let container = document.querySelector("#container");
+                let itemHtml = `<input type ="text"></input><button class="new">삭제</button>`
+
+                let item = document.createElement("div")
+                item.innerHTML = itemHtml;
+                container.append(item);
+
+                let newBtn = document.querySelector("button.new");
+                newBtn.addEventListener("click",(e)=>e.target.closest("div").remove());//가장 가까운 div 조상을 찾는다
+                newBtn.classList.remove("new");
+            })
+        }
+    </script>
+</body>
+</html>

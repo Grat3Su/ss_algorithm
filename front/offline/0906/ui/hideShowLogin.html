@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <style>
+        html, body {
+            height: 100%;
+        }
+        #container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    
+            height: 100%;
+        }
+        
+        #nav{
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            height: 50px;
+    
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+    
+            background-color: lightseagreen;
+        }
+    
+        #nav img{/*동그랗게 나온다*/
+
+            width: 36px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+    
+        #nav a{
+            color: darkolivegreen;
+            margin-right: 20px;
+        }
+        #nav a:link{
+            text-decoration: none;
+        }
+    
+        #login{
+            border: 1px solid lightgray;
+            padding: 25px;
+        }
+    
+        #hello{
+            color:teal;
+        }
+
+        #message{/*화면에 고정*/
+            position : fixed;            
+    
+            bottom: 50px;
+            right: 50px;
+    
+            width: 300px;
+            height: 50px;
+    
+            padding: 10px;      
+            color: white;      
+        }
+    /*
+    사실 block은 디폴트라 딱히 안해도 되긴한데 언젠가 다르게 쓸지도 모르니까 일단 넣어졌다
+    */
+        .open{
+            display: block;
+        }
+    
+        .close{
+            display: none;
+        }
+
+        /* 리팩토링 */
+        .success-bg{
+            background-color: green;
+        }
+        .fail-bg{            
+            background-color: orangered;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div id="nav">
+    <img id="navImg" src="img/noProfile.png">
+    <a id="navLogin" class="loginItem" href="#">로그인</a>
+    <a id="navLogout" class="close" href="#">로그아웃</a>
+    <a id="navRegister" class="loginItem" href="#">회원가입</a>
+    <!--#을 누르면 디폴트 액션이 일어나지 않음-->
+    <!--지금 당장 쓰지 않는것에 쓴다.-->
+</div>
+
+<div id="container">
+    <div id="login" class="close">
+        <h4>Login</h4>
+        <label for="userId">아이디</label>
+        <input id="userId" type="text" value="ssafy">
+        <label for="password">패스워드</label>
+        <input id="password" type="password" value="1234">
+        <hr>
+        <button id="btnLogin">로그인</button>
+    </div>
+    <h1 id="hello" class="animate__animated animate__wobble close">반갑습니다!!!</h1>
+    <img id="img" src="./img/gaja.gif" alt="">
+    <div id="message"></div>   
+</div>
+<script>
+    window.onload=function(){
+        //nav-login
+        document.querySelector("#navLogin").addEventListener("click",function(){
+            const login = document.querySelector("#login");
+            login.classList.remove("close");
+            login.classList.add("open");//현재는 불필요하지만 design에서 close와 대응되는 css가 있다면 넣어준다            
+            //입력창 초기화
+            // document.querySelector("#userId").value = "";
+            // document.querySelector("#password").value = "";
+        })
+        //login process
+        document.querySelector("#btnLogin").addEventListener("click",function(){
+            const userId = document.querySelector("#userId").value;
+            const password = document.querySelector("#password").value;
+            
+            
+            if(userId=="ssafy"&&password=="1234"){
+                //로그인 성공
+                //message 보이기
+                showMessage(0);//로그인 성공
+                
+                //로그인 창
+                document.querySelectorAll(".loginItem").forEach(el=>{
+                    el.classList.remove("open");
+                    el.classList.add("close");
+                })
+                const login = document.querySelector("#login");
+                login.classList.remove("open");
+                login.classList.add("close");
+                
+                // //nav bar
+                // const navLogin = document.querySelector("#navLogin");
+                // navLogin.classList.remove("open");
+                // navLogin.classList.add("close");
+
+                // const navRegister = document.querySelector("#navRegister");
+                // navRegister.classList.remove("open");
+                // navRegister.classList.add("close");
+                
+                const navLogout = document.querySelector("#navLogout");
+                navLogout.classList.remove("close");
+                navLogout.classList.add("open");
+                
+                document.querySelector("#navImg").setAttribute("src","img/molllu.gif")
+                document.querySelector("#img").setAttribute("src","img/Hello!_Logo.jpg")
+                
+                // hello msg
+                const hello = document.querySelector("#hello");
+                hello.classList.remove("close");
+                hello.classList.add("open");
+            }
+            else{
+                showMessage(1);//로그인 실패                
+            }
+        });
+    }
+
+    //로그아웃
+    document.querySelector("#navLogout").addEventListener("click",function(){
+        console.log("logout");
+            const logout = document.querySelector("#login");
+            logout.classList.remove("open");
+            logout.classList.add("close");//현재는 불필요하지만 design에서 close와 대응되는 css가 있다면 넣어준다            
+            
+            document.querySelectorAll(".loginItem").forEach(el=>{
+                    el.classList.remove("close");
+                    el.classList.add("open");
+                })
+                const navLogout = document.querySelector("#navLogout");
+                navLogout.classList.remove("open");
+                navLogout.classList.add("close");
+                
+                const hello = document.querySelector("#hello");
+                hello.classList.remove("open");
+                hello.classList.add("close");
+                document.querySelector("#img").setAttribute("src","img/gaja.gif")
+                document.querySelector("#navImg").setAttribute("src","img/noProfile.png")
+            //입력창 초기화
+            // document.querySelector("#userId").value = "";
+            // document.querySelector("#password").value = "";
+        })
+    
+    const loginMsg=["Login Success", "Login Fail"]
+    const loginClass=["success-bg", "fail-bg"]
+    function showMessage(index){
+        let message = document.querySelector("#message");
+        message.innerText = loginMsg[index];
+        message.setAttribute("class","");//clear
+        message.classList.add(loginClass[index],"open");
+        //message.style.display="block";
+        setTimeout(function(){
+            message.classList.remove("open");
+            message.classList.add("close");
+            //message.style.display ="none";
+        }, 2000);
+    }
+</script>
+
+
+</body>
+</html>
