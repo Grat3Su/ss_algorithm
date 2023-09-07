@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let data = [1,2,3];
+
+        // 비동기 함수로 변경
+        // function getData(){
+        //     //서버에 접속해서 데이터를 받아서 넣는 흉내(setTimeOut())
+
+        //     setTimeout(()=>{//1초뒤에 
+        //         data.push(4);
+        //         data.push(5);
+        //     },1000);//비동기
+        // }
+
+        // function printData(){
+        //     data.forEach(n=>console.log(n));
+        // }
+
+        // // 동기화 처리 : getData가 끝나면 printData를 수행
+        // getData();
+        // printData();
+
+
+        // 비동기 함수로 변경
+        function getData(callback){
+            //서버에 접속해서 데이터를 받아서 넣는 흉내(setTimeOut())
+
+            setTimeout(()=>{//1초뒤에 
+                data.push(4);
+                data.push(5);
+
+                //완료되면 실행하고 싶다
+                callback();//콜백함수 호출
+            },1000);//비동기
+
+        }
+
+        function printData(){
+            data.forEach(n=>console.log(n));
+        }
+        function printData2(){
+            data.forEach(n=>console.log(n));
+        }
+
+        getData(printData);
+
+    </script>
+</body>
+</html>

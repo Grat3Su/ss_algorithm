@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* span{
+            padding: 10px;
+        } */
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h3>받은 데이터</h3>
+        <div id="receivedData">            
+            <div id="receivedData"><div><span>98765</span><span>홍길동</span><span>hong@gildong.com</span></div><div><span>54321</span><span>이길동</span><span>lee@gildong.com</span></div></div>
+        </div>
+    </div>
+        <hr>
+        <button id="btnGet">가져오기</button>
+        
+        <script>
+            //ajax
+            let httpRequest = new XMLHttpRequest();//XHR
+            httpRequest.onreadystatechange = ajaxCallback;//자동호출
+
+            window.onload = function(){
+                document.querySelector("#btnGet").onclick = getJson;
+                document.querySelectorAll("span").forEach((el)=>el.style.padding='10px');
+                //자바스크립트에서 css를 바꾸려고 하면 replace 때문에 다 날아간다.
+                //엥간하면 자바 스크립트에서 css 건들지 마라
+
+            }
+
+            function getJson(){
+                const url = './jsonlist.html';
+                //파라미터로 전달된 내용 기준 준비
+                httpRequest.open(
+                    "Get",
+                    url,
+                    true//async 여부
+                );//파라미터로 전달된 기존 내용 기준 준비
+                httpRequest.send();//http request 전송
+            }
+
+            function ajaxCallback(){
+                //readyState 전체가 아닌 done 상태만 확인
+                if(httpRequest.readyState == XMLHttpRequest.DONE){//서버까지 갔다 온 상태
+                    if(httpRequest.status==200){//제대로 동작했다
+                        //https://developer.mozilla.org/ko/docs/Web/HTTP/Status
+                        //console.log(httpRequest.responseText);
+                        let userList = JSON.parse(httpRequest.responseText);//json 문자열 => 배열 객체로 변환
+                        let userHtml =``; 
+                        userList.forEach((user)=>{
+                            userHtml += `<div><span>${user.userSeq}</span><span>${user.userName}</span><span>${user.userEmail}</span></div>`;
+                        });
+                        document.querySelector("#receivedData").innerHTML = userHtml;
+
+                    } else {
+                        alert("문제발생");
+                    }
+
+                }
+
+            }
+        </script>
+</body>
+</html>

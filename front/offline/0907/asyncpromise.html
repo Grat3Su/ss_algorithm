@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let data = [1,2,3];
+
+        function getData(){
+            return new Promise((resolve, reject)=>{
+
+                setTimeout(()=>{
+                    data.push(5);
+                    data.push(4);
+    
+                    //성공?
+                    resolve();
+                    //실패
+                    reject();
+                },1000)
+            })
+        }
+
+        function printData(){
+            data.forEach(n=>console.log(n))
+        }
+
+        getData()
+        .then(printData)
+        .catch(e=>console.log(e));
+
+    </script>
+</body>
+</html>
