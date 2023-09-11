@@ -1,0 +1,13 @@
+package BOJ.algostudy;
+
+import java.io.*;
+import java.util.*;
+
+public class BOJ_1167_treeLen {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}
