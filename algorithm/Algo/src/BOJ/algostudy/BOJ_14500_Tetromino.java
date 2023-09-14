@@ -31,6 +31,7 @@ public class BOJ_14500_Tetromino {
 	static int N, M, max, maxnum;
 	static int[][] map;
 	static boolean[][] visit;
+	static Coordinates[] c;
 	static int[] dx = { -1, 1, 0, 0 };
 	static int[] dy = { 0, 0, 1, -1 };
 
@@ -43,6 +44,11 @@ public class BOJ_14500_Tetromino {
 		M = Integer.parseInt(st.nextToken());
 		map = new int[M][N];
 		visit = new boolean[M][N];
+		c = new Coordinates[4];
+		
+		for(int i = 0; i<4; i++) {
+			c[i] = new Coordinates(0, 0);
+		}
 
 		for (int i = 0; i < N; i++) {
 			st = new StringTokenizer(br.readLine());
@@ -56,9 +62,11 @@ public class BOJ_14500_Tetromino {
 
 		for (int i = 0; i < M; i++) {
 			for (int j = 0; j < N; j++) {
-				int[] pos = { i, j };
 				visit[i][j] = true;
-				dfs(pos, 0, 0);
+				c[0].x =i;//시작점
+				c[0].y =j;
+				
+				dfs(0);
 				visit[i][j] = false;
 				if(max == maxnum*4)	{
 					System.out.println(max);
@@ -69,22 +77,44 @@ public class BOJ_14500_Tetromino {
 		System.out.println(max);
 	}
 
-	static void dfs(int[] pos, int num, int cnt) {
-		if (cnt == 3) {// 테트로미노다
-			max = Math.max(max, num);
+	static void dfs(int cIdx) {
+		if (cIdx == 3) {// 테트로미노다
+			int sum = 0; 
+			for(int i = 0; i<4; i++) {
+				sum += map[c[i].x][c[i].y];
+			}
+			
+			max = Math.max(max, sum);
 			return;
 		}
-		if(max == maxnum*4)	return; 
+		if (max == maxnum * 4)
+			return;
 
-		for (int i = 0; i < 4; i++) {
-			int x = pos[0] + dx[i];
-			int y = pos[1] + dy[i];
+		for (int d = 0; d < 2; d++) {
+			for (int i = 0; i <= cIdx; i++) {
+				int x = c[i].x + dx[d];
+				int y = c[i].y + dy[d];
 
-			if (x >= M || x < 0 || y >= N || y < 0||visit[x][y]) 	continue;
-			visit[x][y] = true;
-			dfs(new int[] { x, y }, num += map[x][y], cnt + 1);
-			visit[x][y] = false;
+				if (x >= M || x < 0 || y >= N || y < 0 || visit[x][y])
+					continue;
+				c[cIdx+1].x =x; 
+				c[cIdx+1].y =y; 
+				visit[x][y] = true;
+				dfs(cIdx + 1);
+				visit[x][y] = false;
+			}
 		}
+	}
+	
+	static class Coordinates{
+		int x, y;
+
+		public Coordinates(int x, int y) {
+			super();
+			this.x = x;
+			this.y = y;
+		}
+		
 	}
 
 }

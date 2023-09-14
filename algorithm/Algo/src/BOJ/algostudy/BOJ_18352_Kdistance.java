@@ -11,6 +11,12 @@ import java.util.*;
 2 4
 
 ->4
+
+4 3 2 1
+1 2
+1 3
+1 4
+-> -1
  */
 public class BOJ_18352_Kdistance {
 	static int N, M, K, X;
