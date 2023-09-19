@@ -20,4 +20,6 @@ public class SidoDto {
 		SidoCode = sidoCode;
 		this.SidoNM = getSidoNM;
 	}
+	public SidoDto() {
+	}
 }
