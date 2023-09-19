@@ -26,6 +26,7 @@ public class LoginoutServlet extends HttpServlet {
 		switch (job) {
 		case "login": login(request, response);	break;
 		case "logout": logout(request, response);	break;
+		case "login_ajax": loginAjax(request, response);	break;
 
 		}
 	}
@@ -72,6 +73,35 @@ public class LoginoutServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+
+	private void loginAjax(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    System.out.println("loginAjax");
+	    String userEmail = request.getParameter("userEmail");
+	    String userPassword = request.getParameter("userPassword");
+	    System.out.println(userEmail);
+	    System.out.println(userPassword);
+	    
+	    // DB 로그인 성공
+	    // 사용자정보를 DB 에석 가져와서 UserDto 객체를 만든 후 session 에 저장
+	    UserDto userDto = loginoutService.login(userEmail, userPassword);
+	    System.out.println(userDto);
+	    
+	    Gson gson = new Gson();
+	    JsonObject jsonObject = new JsonObject();
+	    
+	    if(userDto!=null) {
+	    	request.getSession().setAttribute("userDto", userDto);
+	    	jsonObject.addProperty("result", "success");
+	    }else {
+	    	jsonObject.addProperty("result", "fail");
+	    	
+	    }
+	    String jsonStr = gson.toJson(jsonObject);
+	    System.out.println(jsonStr);
+	    
+	    response.getWriter().write(jsonStr);
+	    
 	}
 
 }

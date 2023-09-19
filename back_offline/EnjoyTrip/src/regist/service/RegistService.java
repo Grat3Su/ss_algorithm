@@ -1,5 +1,8 @@
 package regist.service;
 
-public interface RegistService {
+import dto.UserDto;
 
+public interface RegistService {
+	UserDto join(String userID, String userPassword, String userName);
+    UserDto joinout(String userID, String userPassword, String userName);
 }

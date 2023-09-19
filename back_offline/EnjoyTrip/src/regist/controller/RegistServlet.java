@@ -51,20 +51,47 @@ public class RegistServlet extends HttpServlet {
 	}
 
 	private void joinout(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		System.out.println("joinoutAjax");
+		String userID = request.getParameter("userID");
+		String userName = request.getParameter("userName");
+		String userPassword = request.getParameter("userPassword");
+		System.out.println(userID);
+		System.out.println(userName);
+		System.out.println(userPassword);
+
+	    // DB 로그인 성공
+	    // 사용자정보를 DB 에석 가져와서 UserDto 객체를 만든 후 session 에 저장
+		UserDto userDto = RegistService.joinout(userID, userName, userPassword);
+		System.out.println(userDto);
+
+		Gson gson = new Gson();
+		JsonObject jsonObject = new JsonObject();
+
+		if(userDto!=null) {
+			request.getSession().setAttribute("userDto", userDto);
+			jsonObject.addProperty("result", "success");
+		}else {
+			jsonObject.addProperty("result", "fail");
+		}
+		String jsonStr = gson.toJson(jsonObject);
+		System.out.println(jsonStr);
+
+		response.getWriter().write(jsonStr);
 		
 	}
 
 	private void join_ajax(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("loginAjax");
-	    String userEmail = request.getParameter("userEmail");
+		System.out.println("joinAjax");
+	    String userID = request.getParameter("userID");
+		String userName = request.getParameter("userName");
 	    String userPassword = request.getParameter("userPassword");
-	    System.out.println(userEmail);
+	    System.out.println(userID);
+		System.out.println(userName);
 	    System.out.println(userPassword);
 	    
 	    // DB 로그인 성공
 	    // 사용자정보를 DB 에석 가져와서 UserDto 객체를 만든 후 session 에 저장
-	    UserDto userDto = RegistService.login(userEmail, userPassword);
+	    UserDto userDto = RegistService.join(userID, userPassword);
 	    System.out.println(userDto);
 	    
 	    Gson gson = new Gson();
