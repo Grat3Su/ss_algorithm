@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 import dto.UserDto;
 import loginout.service.LoginoutService;
 import loginout.service.LoginoutServiceImpl;
@@ -46,9 +49,9 @@ public class LoginoutServlet extends HttpServlet {
 		//성공
 		if(userDto!=null) {
 			request.getSession().setAttribute("userDto", userDto);
-			request.getRequestDispatcher("/index.html").forward(request, response);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 		} else {
-			request.getRequestDispatcher("/login/loginFail.jsp").forward(request, response);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}
 		
 		//세션에 로그인한 사용자 정보를 저장

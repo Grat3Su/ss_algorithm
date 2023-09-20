@@ -4,15 +4,16 @@ import dto.UserDto;
 import loginout.dao.LoginoutDao;
 import loginout.dao.LoginoutDaoImpl;
 import regist.dao.RegistDao;
+import regist.dao.RegistDaoImpl;
 
 public class RegistServiceImpl implements RegistService{
-    private RegistDao registDao = new LoginoutDaoImpl();
+    private RegistDao registDao = new RegistDaoImpl();
 
     @Override
-    public UserDto join(String userID, String userPassword, String userName) {
+    public UserDto join(String userID, String userName, String userPassword) {
         UserDto userDto = registDao.join(userID,userName,userPassword);
 	
-	if(userDto==null) {
+	if(userDto!=null) {
 		userDto.setUserPsssword(null);
 		System.out.println("회원가입");
 		return userDto;
@@ -22,10 +23,10 @@ public class RegistServiceImpl implements RegistService{
 }    
 
     @Override
-    public UserDto joinout(String userID, String userPassword, String userName) {
-        UserDto userDto = registDao.joinout(userID,userName,userPassword);
+    public UserDto joinout(String userID) {
+        UserDto userDto = registDao.joinout(userID);
 	
-        if(userDto!=null&&userDto.getUserPsssword().equals(userPassword)) {
+        if(userDto!=null) {
             System.out.println("탈퇴");
             return userDto;
         }

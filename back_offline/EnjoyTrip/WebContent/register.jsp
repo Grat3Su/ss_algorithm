@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!-- /*
 * Template Name: Blogy
 * Template Author: Untree.co
@@ -183,13 +185,13 @@
             <form action="#">
               <div class="row">
                 <div class="col-12 mb-3">
-                  <input type="text" id="userName" class="form-control" placeholder="Your Name" />
+                  <input type="text" id="userName" class="form-control" placeholder="Your Name" value="김싸피"/>
                 </div>
                 <div class="col-6 mb-3">
-                  <input type="text" id="userId" class="form-control" placeholder="ID" />
+                  <input type="text" id="userId" class="form-control" placeholder="ID" value="ssafy"/>
                 </div>
                 <div class="col-6 mb-3">
-                  <input type="password" id="userPW" class="form-control" placeholder="Password" />
+                  <input type="password" id="userPW" class="form-control" placeholder="Password" value="1234"/>
                 </div>
 
                 <div class="col-12">
@@ -358,39 +360,40 @@
     <script src="js/custom.js"></script>
 
     <script>
-      // 회원가입
-
-      window.onload = function(){
+      // 로그인 함수 정의
+     window.onload = function(){
         document.querySelector("#join").onclick = join;
     }
+     async function join(){
+         let userID = document.querySelector("#userId").value;
+         let userName = document.querySelector("#userName").value;
+         let userPassword = document.querySelector("#userPW").value;
 
-      async function join(){
-        let userId = document.querySelector("#userId").value;
-        let userNM = document.querySelector("#userName").value;
-        let userPassword = document.querySelector("#userPW").value;
+         let urlParams = new URLSearchParams({
+             job: 'join_ajax',
 
-        let urlParams = new URLSearchParams({
-            job: 'join_ajax',
-
-            userId: userId,
-            name:userNM,
-            password: userPassword
-        });
-
-        let fetchOptions = {
-            method: "POST",
-            body: urlParams
-        }
-        let response = await fetch("/EnjoyTrip/RegistServlet", fetchOptions);
-        let data = await response.json();
-        console.log(data);
-        
-        if(data.result == "success"){
-        	window.location.href = "/EnjoyTrip/index"
-        } else if(data.result == "fail"){
-        	alert("회원가입 실패.");
-        }
-      }
+             userID: userID,
+             userName:userName,
+             userPassword: userPassword
+         });
+         
+         let fetchOptions = {
+             method: "POST",
+             body: urlParams
+         }
+         
+         let response = await fetch("/EnjoyTrip/RegistServlet", fetchOptions);
+         let data = await response.json();
+         console.log(data);
+         
+         if(data.result == "success"){
+        	console.log("여기까지됨");
+         	window.location.href = "/EnjoyTrip/login.jsp"
+         } else if(data.result == "fail"){
+         	alert("회원가입 불가");
+         }
+     }
     </script>
   </body>
 </html>
+    
