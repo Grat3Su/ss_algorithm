@@ -24,7 +24,7 @@ public class MyPageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String job = request.getParameter("job");
 		switch (job) {
-		case "change": change(request, response);	break;
+		case "changePW": change(request, response);	break;
 		}
 	}
 
@@ -35,21 +35,21 @@ public class MyPageServlet extends HttpServlet {
 	}
 
 	private void change(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("login");
+		System.out.println("change");
 		String userID = request.getSession().getParameter("userID");
-		String userPassword = request.getSession().getParameter("userID");
+		String userPassword = request.getSession().getParameter("userPassword");
+		String changePW = request.getParameter("changePW");
 		
+		if(userPassword ==""||userPassword==changePW) {//빈칸이거나 같으면 동작하지 않는다
+			return;
+		}
 		
 		//DB 로그인 성공
 		//사용자 정보를 DB에서 가져와서 UserDto 객체를 만든 후 session에 저장해서 사용
 		UserDto userDto =myPageService.change(userID, userPassword);
 		
-		//성공
-		if(userDto!=null) {
-			request.getRequestDispatcher("/main").forward(request, response);
-		} else {
-			request.getRequestDispatcher("/login/loginFail.jsp").forward(request, response);
-		}
+		//성공하든 실패하든 원래 페이지 refresh
+			request.getRequestDispatcher("/EnjoyTrip/mypage.jsp").forward(request, response);
 		
 	}
 
