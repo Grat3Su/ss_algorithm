@@ -13,6 +13,7 @@ public interface BookDao {
      * @throws SQLException
      */
     int insert(Book book) throws SQLException;
+    
 
     /**
      * 전체 Book의 정보를 List에 담아서 반환한다.
@@ -23,4 +24,5 @@ public interface BookDao {
     List<Book> select() throws SQLException;
     
     Book showDetali(String isbn) throws SQLException; 
+    boolean delete(String isbn) throws SQLException;//삭제했나 안했나 체크
 }

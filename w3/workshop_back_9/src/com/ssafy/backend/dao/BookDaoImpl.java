@@ -113,19 +113,8 @@ public class BookDaoImpl implements BookDao {
             // Connection을 통해 PreparedStatement를 가져온다.
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, isbn);
-            // PreparedStatement를 실행한다. select 계열이므로 executeQuery를 사용한다. 결과로 ResultSet을 얻는다.
+            // PreparedStatement를 실행한다.
             rset = pstmt.executeQuery();
-            // 여러 개의 자료가 반환될 수 있으므로 while 문장을 이용한다.
-            while (rset.next()) {
-                // ResultSet을 통해서 조회 결과를 넘겨받는다.
-                // 조회 결과를 이용해 User 객체를 생성하고 list에 담는다.
-            	result = new Book(rset.getString("isbn"),
-                        rset.getString("title"),
-                        rset.getString("author"),
-                        rset.getInt("price"),
-                        rset.getString("desc"),
-                        rset.getString("img"));
-            }
         }
         // 동작의 성공 여부와 상관 없이 사용한 리소스들을 반환한다. 이때 얻은 순의 역순으로 반환해주자.
         finally {
@@ -133,4 +122,29 @@ public class BookDaoImpl implements BookDao {
         }
         return result;
 	}
+	
+	@Override
+	 boolean delete(String isbn) throws SQLException{
+		String sql = "delete from book where isbn=?";
+
+        // DB 접속에서 사용할 객체들을 선언한다.
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rset = null;
+
+        Book result = null;
+        try {
+            // DBUtil을 통해 Connection 객체를 가져온다.
+            con = util.getConnection();
+            // Connection을 통해 PreparedStatement를 가져온다.
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, isbn);
+            // PreparedStatement를 실행한다. select 계열이므로 executeQuery를 사용한다. 결과로 ResultSet을 얻는다.
+            rset = pstmt.executeUpdate();
+            return true;
+	} finally {
+        util.close(rset, pstmt, con);
+    }
+    return false;
+}
 }

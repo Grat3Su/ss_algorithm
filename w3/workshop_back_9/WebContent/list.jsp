@@ -38,9 +38,19 @@
 					<td><a href="/./main?action=detail&isbn=${book.isbn}">${book.isbn }</a></td>
 					<td>${book.author }</td>
 					<td>${book.price }</td>
+					<td><a href="/./main?action=delete&isbn=${book.isbn}">삭제</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	
+	<script>
+	// request 영역에 msg라는 이름의 attribute가 있다면 화면에 alert으로 출력한다.
+	let msg = "${msg}";
+	if (msg) {
+		alert(msg)
+	}
+</script>
+
 </body>
 </html>

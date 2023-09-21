@@ -205,8 +205,25 @@ public class MainServlet extends HttpServlet {
     	
     }
     
-    private void doDel(HttpServletRequest request, HttpServletResponse response) {
-    	// TODO Auto-generated method stub
+    private void doDel(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	String isbn = request.getParameter("isbn");
+    	boolean result = bookDao.delete(isbn);
     	
+    	try {
+    		if (result) {
+    			request.setAttribute("msg", "삭제되었습니다");
+    			RequestDispatcher disp = request.getRequestDispatcher("/list.jsp");
+                disp.forward(request, response);
+            } else {
+                request.setAttribute("msg", "삭제 실패");
+                RequestDispatcher disp = request.getRequestDispatcher("/list.jsp");
+                disp.forward(request, response);
+            }
+        }
+        // 예외가 발생한다면 오류 페이지로 연결한다.
+        catch (Exception e) {
+            e.printStackTrace();
+            response.sendError(500);
+        }
     }
 }
