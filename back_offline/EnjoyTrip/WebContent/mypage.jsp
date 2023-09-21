@@ -145,7 +145,7 @@
 						</div>
 						<br /> <input type="hidden" name="job" value="changePW"><br>
 						<div class="col-6 mb-3">
-							<form action="/MyPageServlet" method="post">
+							<form action="/EnjoyTrip/MyPageServlet" method="post">
 								<input type="password" id="changePW" class="form-control"
 									placeholder="New Password" /> <a><button
 										type="submit" id="btnChangePW" class="btn btn-primary">
