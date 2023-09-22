@@ -24,5 +24,5 @@ public interface BookDao {
     List<Book> select() throws SQLException;
     
     Book showDetali(String isbn) throws SQLException; 
-    boolean delete(String isbn) throws SQLException;//삭제했나 안했나 체크
+    boolean del(String isbn) throws SQLException;//삭제했나 안했나 체크
 }

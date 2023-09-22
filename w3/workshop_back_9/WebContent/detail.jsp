@@ -21,28 +21,28 @@
 	<%@ include file="/include/header.jsp"%>
 	<h1>도서 목록</h1>
 	<table id="book-list">
-		
+		<form method="post" action="main">
 		<tbody>
 		<tr>
-				<td>ISBN</td><td>${book.isbn}</td>
+				<td>ISBN</td><td>${book.isbn}</td><td>${book.isbn}</td>
 		</tr>
 		<tr>
-				<td>제목</td><td>${book.title}</td>
+				<td>제목</td><td>${book.title}</td><td>${book.isbn}</td>
 		</tr>
 		<tr>
-				<td>저자</td><td>${book.author}</td>
+				<td>저자</td><td>${book.author}</td><td>${book.isbn}</td>
 		</tr>
 		<tr>
-				<td>가격</td><td>${book.price}</td>
+				<td>가격</td><td>${book.price}</td><td>${book.isbn}</td>
 		</tr>
 		<tr>
-				<td>설명</td><td>${book.desc}</td>
+				<td>설명</td><td>${book.desc}</td><td><input >${book.isbn}</td>
 		</tr>
 		</tbody>
+		</form>
 	</table>
 	
-	<li><a href="./regist.jsp">도서 등록</a>
-	<li><a href="./main?action=list">도서 목록</a> 
+
 	<li><a href="./main?action=update">도서 수정</a> 
 	<li><a href="./main?action=list">도서 삭제</a> 
 </body>

@@ -13,9 +13,14 @@
 }
 </style>
 <h1 id="title">SSAFY 도서 관리</h1>
+<li><a href="./index.jsp">Home</a>
+	<li><a href="./regist.jsp">도서 등록</a>
+	<li><a href="./main?action=list">도서 목록</a> 
 <div id="user-info">
 	<%-- session에서 loginUser를 가져와서 존재 여부에 따라 로그인 폼 또는 사용자 정보를 출력한다. --%>
 	<%--로그인 정보가 없을 경우는 로그인을 위한 폼을 제공한다. --%>
+	
+	
 	<c:if test="${empty loginUser }">
 	<!-- 비어있는지 체크 -->	
 		<form method="post" action="main">

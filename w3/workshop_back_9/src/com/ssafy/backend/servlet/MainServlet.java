@@ -46,8 +46,7 @@ public class MainServlet extends HttpServlet {
      * request 객체에서 action 파라미터를 추출해서 실제 비지니스 로직 메서드(ex: doRegist)
      * 호출해준다.
      */
-    private void process(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    private void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         switch (action) {
             case "regist":
@@ -205,18 +204,20 @@ public class MainServlet extends HttpServlet {
     	
     }
     
-    private void doDel(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void doDel(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
     	String isbn = request.getParameter("isbn");
-    	boolean result = bookDao.delete(isbn);
-    	
+    	System.out.println(isbn);
+
     	try {
+    	boolean result = bookDao.del(isbn);
+    	System.out.println(result);
     		if (result) {
     			request.setAttribute("msg", "삭제되었습니다");
-    			RequestDispatcher disp = request.getRequestDispatcher("/list.jsp");
+    			RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
                 disp.forward(request, response);
             } else {
                 request.setAttribute("msg", "삭제 실패");
-                RequestDispatcher disp = request.getRequestDispatcher("/list.jsp");
+                RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
                 disp.forward(request, response);
             }
         }
