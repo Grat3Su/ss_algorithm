@@ -1,25 +1,13 @@
 package algo2.off230926;
 
-import java.io.*;
-import java.util.*;
-/*
-. 이동가능
-0 민식이
-# 벽
-1 탈출구
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Queue;
+import java.util.StringTokenizer;
 
-
-5 5
-....1
-#1###
-.1.#0
-....A
-.1.#.
-
--> -1
- */
-
-public class BOJ_1194_달이차오른다가자 {
+public class w {
 	static int N, M, min;
 	static char[][] map;
 	static int[][] dp;
@@ -36,7 +24,8 @@ public class BOJ_1194_달이차오른다가자 {
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
 		
-		map = new char[M][N];
+		map = new char[N][M];
+		visit = new boolean[N][M];
 		
 		int x=0;
 		int y=0;
@@ -50,7 +39,7 @@ public class BOJ_1194_달이차오른다가자 {
 				}
 			}
 		}
-		Arrays.fill(dp, Integer.MAX_VALUE);
+		//Arrays.fill(dp, Integer.MAX_VALUE);
 		Coord start = new Coord(x, y, new boolean[6]);
 		bfs(start);
 		System.out.println(min);
@@ -104,5 +93,4 @@ public class BOJ_1194_달이차오른다가자 {
 			this.key = key;
 		}
 	}
-
 }
