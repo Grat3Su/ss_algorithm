@@ -17,17 +17,25 @@ import java.util.*;
 .1.#.
 
 -> -1
- */
+*/
 
 public class BOJ_1194_달이차오른다가자 {
+	static class Coord{
+		int x, y, cost, key;
+		
+		public Coord(int x, int y, int cost, int key){
+			this.x = x;
+			this.y =y;
+			this.cost = cost;
+			this.key = key;
+		}
+	}
 	static int N, M, min;
 	static char[][] map;
-	static int[][] dp;
-	static boolean[][] visit;
 	
 	static int[] dx = {-1,1,0,0};
 	static int[] dy = {0,0,-1,1};
-	
+	static Coord start;
 
 	public static void main(String[] args) throws Exception{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -36,73 +44,61 @@ public class BOJ_1194_달이차오른다가자 {
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
 		
-		map = new char[M][N];
+		map = new char[N][M];
 		
-		int x=0;
-		int y=0;
 		for(int i = 0; i<N; i++) {
 			String s = br.readLine();
 			for(int j = 0; j<M; j++) {
 				map[i][j] = s.charAt(j);
 				if(map[i][j]=='0') {
-					x=i;
-					y=j;
+					start = new Coord(i,j,0,0);
 				}
 			}
 		}
-		Arrays.fill(dp, Integer.MAX_VALUE);
-		Coord start = new Coord(x, y, new boolean[6]);
-		bfs(start);
-		System.out.println(min);
+		
+		System.out.println(bfs());
 	}
 	
-	static void bfs(Coord pos) {
+	static int bfs() {
 		Queue<Coord>q = new ArrayDeque<>();
-		q.offer(pos);
-		int cnt = 0;
+		boolean[][][]visited = new boolean[N][M][64];
+		q.offer(start);
+		visited[start.x][start.y][0] = true;
 		
 		while(!q.isEmpty()) {
 			Coord c = q.poll();
-			visit[c.x][c.y] = true;
 			
-			cnt++;
 			if(map[c.x][c.y] == '1') {
-				min = Math.min(min, cnt);
-				return;
+				return c.cost;
 			}
 				
 			for(int i = 0; i<4; i++) {
 				int x = c.x+dx[i];
 				int y = c.y+dy[i];
-				if(x>=M || x<0 || y>=N || y<0 || map[x][y]=='#' || visit[x][y]) continue;//벽이거나 방문했거나
+				if(x>=M || x<0 || y>=N || y<0 || map[x][y]=='#' || visited[x][y][c.key]) continue;//벽이거나 방문했거나
 				
 				
-				if(map[x][y]!='.') {//앞에서 벽을 걸렀다. 문 아니면 열쇠
-					if(map[x][y]-'a' <0&&c.key[map[x][y]-'A']) {//문이고 열쇠가 있나
-					}else if(map[x][y]-'a' <0&&!c.key[map[x][y]-'A']) continue;//문이고 열쇠가 없다
-					
-					if(map[x][y]-'a' >=0&&!c.key[map[x][y]-'a']) {//열쇠를 전에  찾았나
-						c.key[map[x][y]-'a'] = true;
-						Arrays.fill(visit, false);
+				if(map[x][y]>='a'&& map[x][y] <='f'){
+					int nkey = 1<<(map[x][y]-'a');
+					nkey = c.key|nkey;
+					visited[x][y][nkey] = true;
+
+					q.offer(new Coord(x,y,c.cost+1, nkey));					
+				}else if(map[x][y]>='A'&& map[x][y] <='F'){
+					if((c.key&1<<(map[x][y]-'A')) == Math.pow(2, map[x][y] - 'A'));{
+						visited[x][y][c.key] = true;
+						q.offer(new Coord(x,y,c.cost+1,c.key));
 					}
-					q.offer(new Coord(x, y, c.key));
+				}else{
+					visited[x][y][c.key] = true;
+					q.offer(new Coord(x,y,c.cost+1,c.key));
 				}
 				
 			}
 		}
-		
+		return -1;
 		
 	}
 	
-	static class Coord{
-		int x, y;
-		boolean[] key;//a b c d e f
-		public Coord(int x, int y, boolean[] key) {
-			super();
-			this.x = x;
-			this.y = y;
-			this.key = key;
-		}
-	}
 
 }
