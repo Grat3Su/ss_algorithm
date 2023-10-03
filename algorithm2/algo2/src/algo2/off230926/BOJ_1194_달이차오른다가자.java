@@ -30,7 +30,7 @@ public class BOJ_1194_달이차오른다가자 {
 			this.key = key;
 		}
 	}
-	static int N, M, min;
+	static int N, M;
 	static char[][] map;
 	
 	static int[] dx = {-1,1,0,0};
@@ -75,7 +75,7 @@ public class BOJ_1194_달이차오른다가자 {
 			for(int i = 0; i<4; i++) {
 				int x = c.x+dx[i];
 				int y = c.y+dy[i];
-				if(x>=M || x<0 || y>=N || y<0 || map[x][y]=='#' || visited[x][y][c.key]) continue;//벽이거나 방문했거나
+				if(x>=N || x<0 || y>=M || y<0 || map[x][y]=='#' || visited[x][y][c.key]) continue;//벽이거나 방문했거나
 				
 				
 				if(map[x][y]>='a'&& map[x][y] <='f'){
@@ -85,7 +85,7 @@ public class BOJ_1194_달이차오른다가자 {
 
 					q.offer(new Coord(x,y,c.cost+1, nkey));					
 				}else if(map[x][y]>='A'&& map[x][y] <='F'){
-					if((c.key&1<<(map[x][y]-'A')) == Math.pow(2, map[x][y] - 'A'));{
+					if((c.key&1<<(map[x][y]-'A')) == (int)Math.pow(2, map[x][y] - 'A'));{
 						visited[x][y][c.key] = true;
 						q.offer(new Coord(x,y,c.cost+1,c.key));
 					}
