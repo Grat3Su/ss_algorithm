@@ -28,6 +28,7 @@ public class SW_5656_brick {
 		T = Integer.parseInt(br.readLine());
 		
 		for(int t = 1; t<=T; t++) {
+			ans = Integer.MAX_VALUE;
 			StringTokenizer st = new StringTokenizer(br.readLine());
 			
 			N =Integer.parseInt(st.nextToken());
@@ -42,19 +43,47 @@ public class SW_5656_brick {
 					map[j][i] = Integer.parseInt(st.nextToken());
 				}
 			}
+
+			for(int i = 0; i<W; i++)
+				shoot(new Brick(i,0,0,map));
 			
 			
-			int[][] map2 = brickFall(map);
-			//맵 출력해본거
-			for(int i = 0; i<H; i++) {
-				for(int j = 0; j<W; j++) {
-					System.out.print(map2[j][i]+" ");
-					
-				}
-				System.out.println();
+				sb.append("#").append(t).append(" ").append(ans).append("\n");
+			}		
+			System.out.println(sb);
+	}
+	
+	static void printMap(int[][] board){
+		for(int i = 0; i<H; i++) {
+			for(int j = 0; j<W; j++) {
+				System.out.print(board[j][i]+" ");					
 			}
-			
+			System.out.println();
 		}		
+	}
+
+	static void shoot(Brick b){
+		if(b.cnt==N){
+			ans = Math.min(leftBrick(b.map), ans);
+			return;
+		}
+		
+
+		//0에서 W까지 반복
+		for(int i = 0; i<W; i++){
+			shoot(new Brick(i, 0, b.cnt+1, ballFall(b.map, i)));
+		}
+	}
+
+	static int leftBrick(int[][] board){
+		int cnt = 0;
+		for(int i = 0; i<W; i++){
+			for(int j = 0; j<H; j++){
+				if(board[i][j]==1)
+				cnt++;
+			}
+		}
+		return cnt;
 	}
 	
 	static int[][] ballFall(int[][] board, int x) {
@@ -62,7 +91,7 @@ public class SW_5656_brick {
 		for(int i = 0; i<H; i++) {
 			if(board[x][i] != 0) {//벽돌에 닿았다
 				br = board[x][i];//
-				board = splitBrick(board, br);
+				board = splitBrick(board, x, i, br);
 				break;
 			}
 		}
@@ -70,9 +99,17 @@ public class SW_5656_brick {
 		return brickFall(board);
 	}
 	
-	static int[][] splitBrick(int[][] board, int n){
+	static int[][] splitBrick(int[][] board, int x, int y, int n){
 		for(int i = 0; i<n ; i++) {
-			
+			//위 아래 오 왼
+			if(x+i>0&&x+i<=W)
+			board[x+i][y] = 0;
+			if(y+i>0&&y+i<=H)
+			board[x][y+i] = 0;
+			if(x-i>0&&x-i<=W)
+			board[x-i][y] = 0;
+			if(y-i>0&&x-i<=H)
+			board[x][y-i] = 0;
 		}
 		return board;
 	}
