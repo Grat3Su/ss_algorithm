@@ -1,4 +1,4 @@
-package off231005;
+package algo2.off231005;
 
 import java.util.*;
 import java.io.*;
