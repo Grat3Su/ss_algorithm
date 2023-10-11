@@ -1,4 +1,4 @@
-package day07;
+package algo_A;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
