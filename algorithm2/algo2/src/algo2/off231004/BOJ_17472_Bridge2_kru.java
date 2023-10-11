@@ -15,7 +15,7 @@ public class BOJ_17472_Bridge2_kru {
 	static int N, M, min;
 	static int V;//정점
 	static int[][] map;
-	static boolean[][] visit;
+	static boolean[][] visit;	
 	
 	static int[] dx = { 1, -1, 0, 0 };
 	static int[] dy = { 0, 0, 1, -1 };
