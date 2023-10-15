@@ -23,6 +23,20 @@ public class DBManager {
 
         return con;
     }
+	public static Connection getConnection(String id, String pw, String url) {
+		Connection con = null;
+		
+		try {
+			Context context = new InitialContext();
+			DataSource ds = (DataSource)context.lookup(url);
+			con = ds.getConnection();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return con;
+	}
 	
 	public static void releaseConnection(ResultSet rs, PreparedStatement  pstmt, Connection con) {
         try {

@@ -71,7 +71,6 @@ public class BoardDaoImpl implements BoardDao {
             pstmt.setInt(3,  boardDto.getBoardId());
     
             ret = pstmt.executeUpdate();
-            
         }catch(Exception e) {
             e.printStackTrace();
         }finally {
