@@ -36,7 +36,7 @@ public class BOJ_17144_미세먼지 {
 
         for (int i = 0; i < R; i++) {
             st = new StringTokenizer(br.readLine());
-            for (int j = 0; j < X; j++) {
+            for (int j = 0; j < C; j++) {
                 map[i][j] = Integer.parseInt(st.nextToken());
             }
         }

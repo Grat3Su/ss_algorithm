@@ -21,7 +21,7 @@ public class BOJ_16234_인구이동2 {
     static int[] dx = { -1, 1, 0, 0 };
     static int[] dy = { 0, 0, -1, 1 };
 
-    static void main(String[] args) {
+    static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
@@ -57,11 +57,6 @@ public class BOJ_16234_인구이동2 {
             if (x < 0 || x >= N || y < 0 || y >= N|| visit[x][y])
                 continue;
             
-            map[x][y]
-
-            if (map[x][y]) {
-                
-            }
             
         }
         map[v.x][v.y] = total/union;
