@@ -11,7 +11,7 @@ import java.util.*;
 -> 2
  */
 
-public class BOJ_1205_grade {
+public class BOJ_1205_grade2 {
     static int N, S, P, ans;
     static int[] scoreBoard;
 
@@ -21,6 +21,13 @@ public class BOJ_1205_grade {
         N = Integer.parseInt(st.nextToken());
         S = Integer.parseInt(st.nextToken());
         P = Integer.parseInt(st.nextToken());
+        scoreBoard = new int[P];
+        st = new StringTokenizer(br.readLine());
+        Arrays.fill(scoreBoard, -1);//-1로 랭크 초기화 : 내 점수가 0점인 경우도 있다.
+        for(int i = 0; i<N; i++) {
+        	scoreBoard[i] = Integer.parseInt(st.nextToken());
+        }
+        
         
         //입력과 동시에 체크
         if (N > 0) {//현재 랭크에 한명이라도 있다
@@ -29,13 +36,9 @@ public class BOJ_1205_grade {
             boolean ranker = false;
             //같은 점수가 있는지 확인
             int sameScore = 1;
-            st = new StringTokenizer(br.readLine());
-            scoreBoard = new int[P];
-            Arrays.fill(scoreBoard, -1);//-1로 랭크 초기화 : 내 점수가 0점인 경우도 있다.
+            
             // scoreBoard[0] = Integer.parseInt(st.nextToken());
             for (int i = 0; i < N; i++) {
-                scoreBoard[i] = Integer.parseInt(st.nextToken());
-
                 if (i > 0) {
                     if (scoreBoard[i] != scoreBoard[i - 1]) {
                         rank += sameScore;//점수가 같은 사람 더해서 현재 점수 얻기
